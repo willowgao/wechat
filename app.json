@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/homepage/homepage",
+    "pages/clientinfo/clientinfo",
+    "pages/clientinfodetail/clientinfodetail",
+    "pages/login/login",
+    "pages/reminder/reminder",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/housesinfo/housesinfo",
+    "pages/housesinfodetail/housesinfodetail",
+    "pages/equipment/equipment",
+    "pages/equipmentdetail/equipmentdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "佳达美",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#87CEFA"
+  }
+}

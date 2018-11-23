@@ -1,0 +1,30 @@
+<!--pages/clientinfodetail/clientinfodetail.wxml-->
+<view class='border_view' style='margin:10px;'>{{item.cName}}
+  <label style='float:right'>广告主</label>
+</view>
+<view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
+  <view class="weui-media-box__title">
+    <label>客户地址：{{item.cAddress}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>负责人姓名：{{item.cCorporation}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>负责人电话：{{item.cCorpTel}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>所属区域：{{item.cAreaName}}</label>
+  </view>
+  <view class="weui-flex" style='margin:10px;'>
+    <view class="weui-flex__item">
+      <view class="weui-media-box__desc">
+        <label>创建时间：{{item.createDate}}</label>
+      </view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="weui-media-box__desc">
+        <label>| 业务员：{{item.salerName}}</label>
+      </view>
+    </view>
+  </view>
+</view>

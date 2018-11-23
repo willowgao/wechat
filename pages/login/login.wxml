@@ -1,0 +1,19 @@
+<!--pages/login/login.wxml-->
+<view style='margin:40px;'>
+  <view class="section weui-cell">
+    <input class='weui-input' focus="{{name_focus}}" placeholder="用户名/手机号/邮箱" bindchange="name" auto-focus/>
+  </view>
+  <view class="section weui-cell">
+    <input type='password' class='weui-input' focus='{{pw_focus}}' placeholder="密码" bindchange="pw" />
+  </view>
+</view>
+
+<view style='margin:10px 30px;'>
+  <button class='weui-btn' type='primary' bindtap='sendMsg'>登录</button>
+</view>
+<view style='margin:10px 30px;'>
+  <button class='weui-btn' type='default'>注册</button>
+</view>
+<view style='margin:10px 30px;float:right;'>
+  <navigator url="/navigate/navigate?title=navigate" hover-class="navigator-hover">忘记密码</navigator>
+</view>

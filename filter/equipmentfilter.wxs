@@ -1,0 +1,38 @@
+var elf = {
+  getLevel: function(id) {
+    if (id === "1") {
+      return "S级";
+    }
+    if (id === "2") {
+      return "A+级";
+    }
+
+    return "";
+  },
+  getStatus: function(status) {
+    if (status === "1") {
+      return "已上刊";
+    }
+    if (status === "2") {
+      return "空刊";
+    }
+
+    return "";
+  },
+  getType: function(type) {
+    if (type === "1") {
+      return "单面";
+    }
+    if (type === "2") {
+      return "双面";
+    }
+
+    return "";
+  }
+}
+
+module.exports = {
+  getLevel: elf.getLevel,
+  getStatus: elf.getStatus,
+  getType: elf.getType
+}

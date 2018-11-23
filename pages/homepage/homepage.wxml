@@ -1,0 +1,76 @@
+<!--pages/homepage/homepage.wxml-->
+<!-- 引入设备过滤器 -->
+<wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
+
+<view class='page'>
+  <view class="weui-flex" style='padding-top:10px;'>
+    <view class="weui-flex__ite" style='text-align:center;'>
+      <image class="item" style='margin:20px 30px 0 30px;height:40px;' src='../../utils/pic/kh_prod.png' bindtap='getUserI'></image>
+      <span style='margin:0 30px;'>客户</span>
+    </view>
+    <view class="weui-flex__ite" style='text-align:center;'>
+      <image class="item" style='margin:20px 30px 0 30px;height:40px;' src='../../utils/pic/lp_prod.png' bindtap='getHouseI'></image>
+      <span style='margin:0 30px;'>楼盘</span>
+    </view>
+    <view class="weui-flex__ite" style='text-align:center;'>
+      <image class="item" style='margin:20px 30px 0 30px;height:40px;' src='../../utils/pic/sb_prod.png' bindtap='getEquipmentI'></image>
+      <span style='margin:0 30px;'>设备</span>
+    </view>
+  </view>
+
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="weui-panel__hd">推荐点位</view>
+      </view>
+      <view class="weui-flex__item">
+        <view style='float:right;'>
+          <image class="item" style='height:30px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/map.png' bindtap='getEquipmentI'></image>
+        </view>
+      </view>
+    </view>
+    <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+      <navigator url="../clientinfodetail/clientinfodetail?cid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" style='height:75%;width:75%;margin:6px' src="../../utils/pic/sb.png" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">
+            <label>设备名称：{{item.devName}}</label>
+          </view>
+          <view class="weui-flex">
+            <view class="weui-flex__item">
+              <view class="weui-media-box__desc">
+                <label>设备类型：{{elf.getType(item.devType)}}</label>
+              </view>
+            </view>
+          </view>
+          <view class="weui-flex">
+            <view class="weui-flex__item">
+              <view class="weui-media-box__desc">
+                <label>设备状态：{{elf.getStatus(item.devStatus)}}</label>
+              </view>
+            </view>
+            <view class="weui-flex__item">
+              <view class="weui-media-box__desc">
+                <label>| 设备等级：{{elf.getLevel(item.devLevel)}}</label>
+              </view>
+            </view>
+          </view>
+          <view class="weui-media-box__desc">
+            <label>地址：{{item.devAddress}}</label>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class="weui-panel__ft">
+      <view class="weui-cell weui-cell_access weui-cell_link">
+        <view class="weui-cell__bd">查看更多</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <map id="myMap" style="width: 100%; height: 300px;" longitude="116.313972" latitude="39.980014" scale='16' markers="{{markers}}"></map>
+  </view>
+</view>

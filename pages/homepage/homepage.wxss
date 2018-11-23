@@ -1,0 +1,14 @@
+@import "../../libs/weui.wxss";
+
+.page-section {
+  margin-bottom: 20rpx;
+}
+
+.flex-wrp {
+  display: flex;
+  width: 100%;
+}
+
+.item {
+  width: 30%;
+}

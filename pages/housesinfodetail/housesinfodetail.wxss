@@ -1,0 +1,9 @@
+/* pages/housesinfodetail/housesinfodetail.wxss */
+@import "../../libs/weui.wxss";
+.border_view{
+  border-bottom: 1rpx solid grey;
+  margin: 10rpx;
+}
+.view_mg{
+  margin: 5rpx;
+}

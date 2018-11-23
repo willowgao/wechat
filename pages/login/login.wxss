@@ -1,0 +1,17 @@
+/* pages/login/login.wxss */
+@import "../../libs/weui.wxss";
+
+.page-section{
+  margin-bottom: 20rpx;
+}
+
+.input-sty{
+  margin: 15rpx;
+  border-style: solid;
+  border-bottom:1px;
+  border-color: #0000
+}
+
+.input-xhx{
+  border-bottom:1px solid #0000
+}
