@@ -5,7 +5,10 @@ const app = getApp()
 Page({
   data: {
     items: [],
-    markers: []
+    markers: [],
+    isMap: true,
+    latitude: "",
+    longitude: ""
   },
   onLoad: function() {
     // 实例化API核心类
@@ -15,34 +18,50 @@ Page({
   },
   onShow: function() {
     var that = this;
-    // 调用接口
-    qqmapsdk.search({
-      keyword: '酒店',
-      location: '39.980014,116.313972', //设置周边搜索中心点
-      success: function(res) {
-        var mks = [];
-        for (var i = 0; i < res.data.length; i++) {
-          mks.push({ // 获取返回结果，放到mks数组中
-            title: res.data[i].title,
-            id: res.data[i].id,
-            latitude: res.data[i].location.lat,
-            longitude: res.data[i].location.lng,
-            iconPath: "../../utils/pic/location.png", //图标路径
-            width: 20,
-            height: 20
-          })
-        }
-        that.setData({ //设置markers属性，将搜索结果显示在地图中
-          markers: mks
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        let locations = latitude +","+ longitude;
+        that.setData({
+          latitude: latitude,
+          longitude: longitude
         })
-      },
-      fail: function(res) {
-        console.log(res);
-      },
-      complete: function(res) {
-        console.log(res);
+
+        // 调用接口
+        qqmapsdk.search({
+          keyword: '酒店',
+          location: locations, //设置周边搜索中心点
+          success: function(res) {
+            var mks = [];
+            for (var i = 0; i < res.data.length; i++) {
+              mks.push({ // 获取返回结果，放到mks数组中
+                title: res.data[i].title,
+                id: res.data[i].id,
+                latitude: res.data[i].location.lat,
+                longitude: res.data[i].location.lng,
+                iconPath: "../../utils/pic/location.png", //图标路径
+                width: 20,
+                height: 20
+              })
+            }
+            that.setData({ //设置markers属性，将搜索结果显示在地图中
+              markers: mks
+            })
+          },
+          fail: function(res) {
+            console.log(res);
+          },
+          complete: function(res) {
+            console.log(res);
+          }
+        });
       }
-    });
+    })
+
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -106,5 +125,17 @@ Page({
         app.openConfirm();
       }
     })
+  },
+  toggleShow: function() {
+    var that = this;
+    if (that.data.isMap) {
+      that.setData({
+        isMap: false
+      })
+    } else {
+      that.setData({
+        isMap: true
+      })
+    }
   }
 })

@@ -28,11 +28,54 @@ var elf = {
     }
 
     return "";
+  },
+  getArea:function(id){
+    if (id === "02") {
+      return "江岸区";
+    }
+    if (id === "03") {
+      return "江汉区";
+    }
+    if (id === "04") {
+      return "硚口区";
+    }
+    if (id === "05") {
+      return "汉阳区";
+    }
+    if (id === "06") {
+      return "武昌区";
+    }
+    if (id === "07") {
+      return "洪山区";
+    }
+    if (id === "08") {
+      return "青山区";
+    }
+    if (id === "09") {
+      return "东西湖区";
+    }
+    if (id === "10") {
+      return "蔡甸区";
+    }
+    if (id === "11") {
+      return "江夏区";
+    }
+    if (id === "12") {
+      return "黄陂区";
+    }
+    if (id === "13") {
+      return "汉南区";
+    }
+    if (id === "14") {
+      return "新洲区";
+    }
+    return "";
   }
 }
 
 module.exports = {
   getLevel: elf.getLevel,
   getStatus: elf.getStatus,
-  getType: elf.getType
+  getType: elf.getType,
+  getArea: elf.getArea
 }

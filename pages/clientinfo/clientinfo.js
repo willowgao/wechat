@@ -9,7 +9,8 @@ Page({
     inputShowed: false,
     inputVal: "",
     items: [],
-    userId: null
+    userId: null,
+    cName:""
   },
 
   /**
@@ -34,26 +35,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that = this;
-    var msg_s = app.deepCopy(app.cacheConsts());
-    msg_s.head.servCode = '100005';
-    msg_s.body.userid = that.data.userId;
-    app.sendM(msg_s);
-    //消息回调
-    wx.onSocketMessage(function (data) {
-      var json = JSON.parse(data.data);
-      console.log(json);
-      if (json.state === 'ok') {
-        that.setData({
-          items: json.resultMap.result
-        })
-      } else {
-        wx.showModal({
-          content: '获取客户信息失败，请重试',
-          showCancel: false
-        });
-      }
-    })
+    this.getAppData();
   },
 
   /**
@@ -117,5 +99,33 @@ Page({
     this.setData({
       inputVal: e.detail.value
     });
+  },
+  getAppData:function(){
+    let that = this;
+    let msg_s = app.deepCopy(app.cacheConsts());
+    msg_s.head.servCode = '100005';
+    msg_s.body.userid = that.data.userId;
+    msg_s.body.cName = that.data.cName;
+    app.sendM(msg_s);
+    //消息回调
+    wx.onSocketMessage(function (data) {
+      var json = JSON.parse(data.data);
+      console.log(json);
+      if (json.state === 'ok') {
+        that.setData({
+          items: json.resultMap.result
+        })
+      } else {
+        wx.showModal({
+          content: '获取客户信息失败，请重试',
+          showCancel: false
+        });
+      }
+    })
+  },
+  bindKeyInput: function (e) {
+    this.setData({
+      cName: e.detail.value
+    })
   }
 })
