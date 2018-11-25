@@ -6,6 +6,9 @@ var elf = {
     if (id === "2") {
       return "A+级";
     }
+    if (id === "3") {
+      return "A级";
+    }
 
     return "";
   },

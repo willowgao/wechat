@@ -7,7 +7,7 @@
           <input placeholder="请输入客户名称" bindinput="bindKeyInput" />
         </view>
       </view>
-      <view class='sousuo' bindtap="getAppData">搜索</view>
+      <view class='sousuo' bindtap="testAdd">搜索</view>
     </view>
   </view>
   <view class="weui-panel weui-panel_access">

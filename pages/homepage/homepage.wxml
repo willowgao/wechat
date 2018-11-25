@@ -40,29 +40,29 @@
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
             <view class="weui-media-box__title">
-              <label>设备名称：{{item.devName}}</label>
+              <label>设备名称：{{item.dev_batchno}}</label>
             </view>
             <view class="weui-flex">
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
-                  <label>设备类型：{{elf.getType(item.devType)}}</label>
+                  <label>设备类型：{{elf.getType(item.dev_type)}}</label>
                 </view>
               </view>
             </view>
             <view class="weui-flex">
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
-                  <label>设备状态：{{elf.getStatus(item.devStatus)}}</label>
+                  <label>设备状态：{{elf.getStatus(item.dev_status)}}</label>
                 </view>
               </view>
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
-                  <label>| 设备等级：{{elf.getLevel(item.devLevel)}}</label>
+                  <label>| 设备等级：{{elf.getLevel(item.dev_level)}}</label>
                 </view>
               </view>
             </view>
             <view class="weui-media-box__desc">
-              <label>地址：{{item.devAddress}}</label>
+              <label>地址：{{item.dev_address}}</label>
             </view>
           </view>
         </navigator>

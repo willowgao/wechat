@@ -10,13 +10,14 @@ Page({
     inputVal: "",
     items: [],
     userId: null,
-    cName:""
+    cName: "",
+    test01: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     wx.getStorage({
       key: 'userinfo',
@@ -34,73 +35,73 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     this.getAppData();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  showInput: function () {
+  showInput: function() {
     this.setData({
       inputShowed: true
     });
   },
-  hideInput: function () {
+  hideInput: function() {
     this.setData({
       inputVal: "",
       inputShowed: false
     });
   },
-  clearInput: function () {
+  clearInput: function() {
     this.setData({
       inputVal: ""
     });
   },
-  inputTyping: function (e) {
+  inputTyping: function(e) {
     this.setData({
       inputVal: e.detail.value
     });
   },
-  getAppData:function(){
+  getAppData: function() {
     let that = this;
     let msg_s = app.deepCopy(app.cacheConsts());
     msg_s.head.servCode = '100005';
@@ -108,12 +109,13 @@ Page({
     msg_s.body.cName = that.data.cName;
     app.sendM(msg_s);
     //消息回调
-    wx.onSocketMessage(function (data) {
+    wx.onSocketMessage(function(data) {
       var json = JSON.parse(data.data);
       console.log(json);
       if (json.state === 'ok') {
         that.setData({
-          items: json.resultMap.result
+          items: json.resultMap.result.rows,
+          test01: json.resultMap.result.rows[0]
         })
       } else {
         wx.showModal({
@@ -123,9 +125,13 @@ Page({
       }
     })
   },
-  bindKeyInput: function (e) {
+  bindKeyInput: function(e) {
     this.setData({
       cName: e.detail.value
     })
+  },
+  testAdd:function(){
+    let that = this;
+    that.data.items.push(that.data.test01)
   }
 })

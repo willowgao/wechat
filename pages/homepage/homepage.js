@@ -6,7 +6,7 @@ Page({
   data: {
     items: [],
     markers: [],
-    isMap: true,
+    isMap: false,
     latitude: "",
     longitude: ""
   },
@@ -23,45 +23,14 @@ Page({
       success(res) {
         let latitude = res.latitude
         let longitude = res.longitude
-        let locations = latitude +","+ longitude;
+        let locations = latitude + "," + longitude;
+        console.log(locations);
         that.setData({
           latitude: latitude,
           longitude: longitude
         })
-
-        // 调用接口
-        qqmapsdk.search({
-          keyword: '酒店',
-          location: locations, //设置周边搜索中心点
-          success: function(res) {
-            var mks = [];
-            for (var i = 0; i < res.data.length; i++) {
-              mks.push({ // 获取返回结果，放到mks数组中
-                title: res.data[i].title,
-                id: res.data[i].id,
-                latitude: res.data[i].location.lat,
-                longitude: res.data[i].location.lng,
-                iconPath: "../../utils/pic/location.png", //图标路径
-                width: 20,
-                height: 20
-              })
-            }
-            that.setData({ //设置markers属性，将搜索结果显示在地图中
-              markers: mks
-            })
-          },
-          fail: function(res) {
-            console.log(res);
-          },
-          complete: function(res) {
-            console.log(res);
-          }
-        });
       }
     })
-
-
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -76,8 +45,25 @@ Page({
     wx.onSocketMessage(function(data) {
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
+        let rows = json.resultMap.result.rows;
         that.setData({
-          items: json.resultMap.result
+          items: rows
+        })
+        var mks = [];
+        for (var i = 0; i < rows.length; i++) {
+          let location = rows[i].dev_position.split(",");
+          mks.push({ // 获取返回结果，放到mks数组中
+            title: rows[i].dev_batchno,
+            id: rows[i].id,
+            latitude: location[1],
+            longitude: location[0],
+            iconPath: "../../utils/pic/location.png", //图标路径
+            width: 35,
+            height: 35
+          })
+        }
+        that.setData({ //设置markers属性，将搜索结果显示在地图中
+          markers: mks
         })
       } else {
         wx.showModal({

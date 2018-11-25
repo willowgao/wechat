@@ -117,5 +117,17 @@ App({
         }
       }
     })
+  },
+  onshow: function() {
+    if (wx.getUpdateManager) {
+      const updateManager = wx.getUpdateManager();
+      updateManager.onUpdateReady(function() {
+        wx.showToast({
+          title: '应用更新，准备重启',
+          icon: 'none'
+        })
+        updateManager.applyUpdate();
+      })
+    }
   }
 })
