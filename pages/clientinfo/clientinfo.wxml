@@ -1,56 +1,58 @@
 <view class="page">
-  <view class="page__bd">
-    <view class='page_row' bindtap="suo">
+  <view class="page__bd" style='height:{{upHeight}}rpx;'>
+    <view class='page_row'>
       <view class="search">
         <view class="df search_arr">
           <icon class="searchcion" size='19' type='search'></icon>
           <input placeholder="请输入客户名称" bindinput="bindKeyInput" />
         </view>
       </view>
-      <view class='sousuo' bindtap="testAdd">搜索</view>
+      <view class='sousuo' bindtap="getAppData">搜索</view>
     </view>
   </view>
   <view class="weui-panel weui-panel_access">
-    <view class="weui-panel__hd">客户列表</view>
-    <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
-      <navigator url="../clientinfodetail/clientinfodetail?cid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <image class="weui-media-box__thumb" style='height:75%;width:75%;margin:6px' src="../../utils/pic/kh_list_prod.png" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">
-            <label>客户名称：{{item.cName}}</label>
+    <view class="weui-panel__hd" style='height:12px;'>客户列表</view>
+    <scroll-view scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
+      <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+        <navigator url="../clientinfodetail/clientinfodetail?cid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" style='height:75%;width:75%;margin:6px' src="../../utils/pic/kh_list_prod.png" />
           </view>
-          <view class="weui-flex">
-            <view class="weui-flex__item">
-              <view class="weui-media-box__desc">
-                <label>联系人：{{item.cName}}</label>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">
+              <label>客户名称：{{item.cName}}</label>
+            </view>
+            <view class="weui-flex">
+              <view class="weui-flex__item">
+                <view class="weui-media-box__desc">
+                  <label>联系人：{{item.cName}}</label>
+                </view>
+              </view>
+              <view class="weui-flex__item">
+                <view class="weui-media-box__desc">
+                  <label>联系电话：{{item.cTel}}</label>
+                </view>
               </view>
             </view>
-            <view class="weui-flex__item">
-              <view class="weui-media-box__desc">
-                <label>联系电话：{{item.cTel}}</label>
+            <view class="weui-flex">
+              <view class="weui-flex__item">
+                <view class="weui-media-box__desc">
+                  <label>业务员：{{item.salername}}</label>
+                </view>
+              </view>
+              <view class="weui-flex__item">
+                <view class="weui-media-box__desc">
+                  <label>业务员电话：{{item.cCorpTel}}</label>
+                </view>
               </view>
             </view>
-          </view>
-          <view class="weui-flex">
-            <view class="weui-flex__item">
-              <view class="weui-media-box__desc">
-                <label>业务员：{{item.salername}}</label>
-              </view>
-            </view>
-            <view class="weui-flex__item">
-              <view class="weui-media-box__desc">
-                <label>业务员电话：{{item.cCorpTel}}</label>
-              </view>
+            <view class="weui-media-box__desc">
+              <label>客户地址：{{item.cAddress}}</label>
             </view>
           </view>
-          <view class="weui-media-box__desc">
-            <label>客户地址：{{item.cAddress}}</label>
-          </view>
-        </view>
-      </navigator>
-    </view>
+        </navigator>
+      </view>
+    </scroll-view>
   </view>
   <!-- <view class="weui-footer weui-footer_fixed-bottom">
     <view class="weui-footer__links">

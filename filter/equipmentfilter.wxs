@@ -32,7 +32,7 @@ var elf = {
 
     return "";
   },
-  getArea:function(id){
+  getArea: function(id) {
     if (id === "02") {
       return "江岸区";
     }

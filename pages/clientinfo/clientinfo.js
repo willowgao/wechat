@@ -11,7 +11,12 @@ Page({
     items: [],
     userId: null,
     cName: "",
-    test01: {}
+    test01: {},
+    scrollTop: 0,
+    upHeight: 30,
+    contentHeight: 30,
+    page: 1,
+    rows: 8,
   },
 
   /**
@@ -28,6 +33,18 @@ Page({
       },
       fail(res) {
         app.openConfirm();
+      }
+    });
+    wx.getSystemInfo({
+      success: function(res) {
+        let height = res.windowHeight * 0.1;
+        let heightC = res.windowHeight - height - 12;
+        that.setData({
+          upHeight: height,
+          contentHeight: heightC
+        })
+        console.log(height);
+        console.log(heightC);
       }
     })
   },
@@ -102,20 +119,38 @@ Page({
     });
   },
   getAppData: function() {
+    wx.showToast({
+      title: '数据加载中',
+      icon: 'loading'
+    });
+
     let that = this;
     let msg_s = app.deepCopy(app.cacheConsts());
     msg_s.head.servCode = '100005';
     msg_s.body.userid = that.data.userId;
     msg_s.body.cName = that.data.cName;
+    msg_s.body.page = that.data.page;
+    msg_s.body.rows = that.data.rows;
+
     app.sendM(msg_s);
     //消息回调
     wx.onSocketMessage(function(data) {
+      wx.hideToast();
+      wx.showToast({
+        title: '数据加载完成',
+        icon: 'success',
+        duration: 2000
+      });
+
       var json = JSON.parse(data.data);
-      console.log(json);
       if (json.state === 'ok') {
+        let data_old = that.data.items;
+        let data_new = json.resultMap.result.rows;
+        for (var i = 0; i < data_new.length; i++) {
+          data_old.push(data_new[i]);
+        }
         that.setData({
-          items: json.resultMap.result.rows,
-          test01: json.resultMap.result.rows[0]
+          items: data_old
         })
       } else {
         wx.showModal({
@@ -130,8 +165,11 @@ Page({
       cName: e.detail.value
     })
   },
-  testAdd:function(){
+  lower: function(e) {
     let that = this;
-    that.data.items.push(that.data.test01)
+    that.setData({
+      page:that.data.page+1
+    })
+    that.getAppData();
   }
 })

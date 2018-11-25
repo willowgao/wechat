@@ -13,7 +13,7 @@
     "pages/equipmentdetail/equipmentdetail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "佳达美",
     "navigationBarTextStyle": "black",

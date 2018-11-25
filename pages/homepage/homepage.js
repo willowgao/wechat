@@ -41,8 +41,18 @@ Page({
     msg_s.head.servCode = '100004';
     msg_s.body.userid = "1";
     app.sendM(msg_s);
+    wx.showToast({
+      title: '数据加载中',
+      icon: 'loading'
+    });
     //消息回调
     wx.onSocketMessage(function(data) {
+      wx.hideToast();
+      wx.showToast({
+        title: '数据加载完成',
+        icon: 'success',
+        duration: 2000
+      });
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
         let rows = json.resultMap.result.rows;
