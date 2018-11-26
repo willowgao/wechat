@@ -24,7 +24,6 @@ Page({
         let latitude = res.latitude
         let longitude = res.longitude
         let locations = latitude + "," + longitude;
-        console.log(locations);
         that.setData({
           latitude: latitude,
           longitude: longitude
@@ -51,7 +50,7 @@ Page({
       wx.showToast({
         title: '数据加载完成',
         icon: 'success',
-        duration: 2000
+        duration: 1000
       });
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {

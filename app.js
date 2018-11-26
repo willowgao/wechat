@@ -86,6 +86,7 @@ App({
     });
   },
   onLaunch: function() {
+    this.isUpdateVersion();
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -118,7 +119,7 @@ App({
       }
     })
   },
-  onshow: function() {
+  isUpdateVersion: function() {
     if (wx.getUpdateManager) {
       const updateManager = wx.getUpdateManager();
       updateManager.onUpdateReady(function() {
