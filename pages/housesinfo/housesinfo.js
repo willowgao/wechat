@@ -52,7 +52,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    this.getAppData();
+    this.getAppData(false);
   },
 
   showInput: function() {
@@ -76,7 +76,7 @@ Page({
       inputVal: e.detail.value
     });
   },
-  getAppData: function() {
+  getAppData: function(isSearch) {
     let that = this;
     wx.showToast({
       title: '数据加载中',
@@ -104,12 +104,20 @@ Page({
       if (json.state === 'ok') {
         let data_old = that.data.items;
         let data_new = json.resultMap.result.rows;
-        for (var i = 0; i < data_new.length; i++) {
-          data_old.push(data_new[i]);
+
+        if (isSearch) {
+          that.setData({
+            items: data_new,
+            buildname:""
+          })
+        } else {
+          for (var i = 0; i < data_new.length; i++) {
+            data_old.push(data_new[i]);
+          }
+          that.setData({
+            items: data_old
+          })
         }
-        that.setData({
-          items: data_old
-        })
       } else {
         wx.showModal({
           content: '获取客户信息失败，请重试',
@@ -138,11 +146,15 @@ Page({
       }
     });
   },
-  lower: function (e) {
+  lower: function(e) {
     let that = this;
     that.setData({
       page: that.data.page + 1
     })
-    that.getAppData();
+    that.getAppData(false);
+  },
+  getAppDataSearch: function() {
+    let that = this;
+    that.getAppData(true);
   }
 })

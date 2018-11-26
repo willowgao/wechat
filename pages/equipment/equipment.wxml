@@ -1,59 +1,54 @@
+<!-- 引入过滤器 -->
+<wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
+
 <view class="page">
-  <view class="page__bd">
-    <view class="weui-search-bar">
-      <view class="weui-search-bar__form">
-        <view class="weui-search-bar__box">
-          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-            <icon type="clear" size="14"></icon>
-          </view>
+  <view class="page__bd" style='height:{{upHeight}}rpx;'>
+    <view class='page_row'>
+      <view class="search">
+        <view class="df search_arr">
+          <icon class="searchcion" size='19' type='search'></icon>
+          <input placeholder="请输入设备编码/设备地址" bindinput="bindKeyInput" />
         </view>
-        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-          <icon class="weui-icon-search" type="search" size="14"></icon>
-          <view class="weui-search-bar__text">搜索</view>
-        </label>
       </view>
-      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-    </view>
-    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
-      <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">
-          <view>暂无匹配结果</view>
-        </view>
-      </navigator>
+      <view class='sousuo' bindtap="getAppDataSearch">搜索</view>
     </view>
   </view>
   <view class="weui-panel weui-panel_access">
-    <view class="weui-panel__hd">设备列表</view>
-    <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
-      <navigator url="../equipmentdetail/equipmentdetail?devid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <image class="weui-media-box__thumb" style='height:75%;width:75%;margin:6px' src="../../utils/pic/sb.png" />
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="weui-panel__hd">设备列表</view>
+      </view>
+      <view class="weui-flex__item" style='height:12px;'>
+        <view style='float:right;'>
+          <image class="item" style='height:30px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/qy.png' bindtap="open"></image>
         </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">
-            <label>设备名称：{{item.devName}}</label>
-          </view>
-          <view class="weui-media-box__desc">
-            <label>设备编码：{{item.devBatchno}}</label>
-          </view>
-          <view class="weui-media-box__desc">
-            <label>设备地址：{{item.devAddress}}</label>
-          </view>
-          <view class="weui-media-box__desc">
-            <label>设备状态：{{item.devStatus===1?"已上刊":"空刊"}}</label>
-          </view>
-          <view class="weui-media-box__desc">
-            <label>设备等级：{{item.devLevel===1?"S级":"A级"}}</label>
-          </view>
-        </view>
-      </navigator>
+      </view>
     </view>
+    <scroll-view scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
+      <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+        <navigator url="../equipmentdetail/equipmentdetail?devid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" style='height:75%;width:75%;margin:6px' src="../../utils/pic/sb.png" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">
+              <label>设备编号：{{item.dev_batchno}}</label>
+            </view>
+            <!-- <view class="weui-media-box__desc">
+              <label>设备编码：{{item.dev_batchno}}</label>
+            </view> -->
+            <view class="weui-media-box__desc">
+              <label>设备地址：{{item.dev_address}}</label>
+            </view>
+            <view class="weui-media-box__desc">
+              <label>设备状态：{{elf.getStatus(item.dev_status)}}</label>
+            </view>
+            <view class="weui-media-box__desc">
+              <label>设备等级：{{elf.getLevel(item.dev_level)}}</label>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </scroll-view>
   </view>
-  <!-- <view class="weui-footer weui-footer_fixed-bottom">
-    <view class="weui-footer__links">
-      <view class="weui-footer__text">向上拉查看更多</view>
-    </view>
-  </view> -->
 </view>

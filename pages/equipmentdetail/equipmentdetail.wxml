@@ -1,6 +1,8 @@
 <!--pages/equipmentdetail/equipmentdetail.wxml-->
+<!-- 引入过滤器 -->
+<wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
 
-<view class='border_view' style='margin:10px;'>{{item.devName}}</view>
+<view class='border_view' style='margin:10px;'>{{item.devBatchno}}</view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
   <view class="weui-media-box__title">
     <label>设备编号：{{item.devBatchno}}</label>
@@ -12,16 +14,16 @@
     <label>客户名称：{{item.cName}}</label>
   </view>
   <view class="weui-media-box__title">
-    <label>所属区域：{{item.buildName}}</label>
+    <label>所属区域：{{elf.getArea(item.devArea)}}</label>
   </view>
   <view class="weui-media-box__title">
     <label>所属楼盘：{{item.buildName}}</label>
   </view>
   <view class="weui-media-box__title">
-    <label>设备类型：{{item.devType===1?"单面":"双面"}}</label>
+    <label>设备类型：{{elf.getType(item.devType)}}</label>
   </view>
   <view class="weui-media-box__title">
-    <label>设备等级：{{item.devLevel===1?"S级":"A级"}}</label>
+    <label>设备等级：{{elf.getLevel(item.devLevel)}}</label>
   </view>
   <view class="weui-media-box__title">
     <label>安装地址：{{item.devAddress}}</label>
@@ -31,6 +33,4 @@
   <view class="weui-article__p" wx:for="{{picArray}}" wx:for-index="index" wx:for-item="pic" wx:key="key">
     <image class="weui-article__img" src="{{pic}}" />
   </view>
-
-  <map id="myMap" style="width: 100%; height: 300px;" longitude="116.313972" latitude="39.980014" scale='16' subkey="XMEBZ-IXNCU-6K4VM-2VFLR-7XOE7-J7BXG" polyline="{{polyline}}" markers="{{markers}}"></map>
 </view>

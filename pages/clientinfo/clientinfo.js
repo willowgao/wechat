@@ -53,31 +53,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    this.getAppData();
+    this.getAppData(false);
   },
-
-  showInput: function() {
-    this.setData({
-      inputShowed: true
-    });
-  },
-  hideInput: function() {
-    this.setData({
-      inputVal: "",
-      inputShowed: false
-    });
-  },
-  clearInput: function() {
-    this.setData({
-      inputVal: ""
-    });
-  },
-  inputTyping: function(e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-  },
-  getAppData: function() {
+  getAppData: function(isSearch) {
     wx.showToast({
       title: '数据加载中',
       icon: 'loading'
@@ -105,12 +83,19 @@ Page({
       if (json.state === 'ok') {
         let data_old = that.data.items;
         let data_new = json.resultMap.result.rows;
-        for (var i = 0; i < data_new.length; i++) {
-          data_old.push(data_new[i]);
+        if (isSearch) {
+          that.setData({
+            items: data_new,
+            cName: ""
+          })
+        } else {
+          for (var i = 0; i < data_new.length; i++) {
+            data_old.push(data_new[i]);
+          }
+          that.setData({
+            items: data_old
+          })
         }
-        that.setData({
-          items: data_old
-        })
       } else {
         wx.showModal({
           content: '获取客户信息失败，请重试',
@@ -127,8 +112,12 @@ Page({
   lower: function(e) {
     let that = this;
     that.setData({
-      page:that.data.page+1
+      page: that.data.page + 1
     })
-    that.getAppData();
+    that.getAppData(false);
+  },
+  getAppDataSearch: function() {
+    let that = this;
+    that.getAppData(true);
   }
 })

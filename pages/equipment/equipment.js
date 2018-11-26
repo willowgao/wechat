@@ -8,81 +8,115 @@ Page({
   data: {
     inputShowed: false,
     inputVal: "",
-    items: []
+    items: [],
+    userId: null,
+    key: "",
+    scrollTop: 0,
+    upHeight: 30,
+    contentHeight: 30,
+    page: 1,
+    rows: 8,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var that = this;
+    wx.getStorage({
+      key: 'userinfo',
+      success(res) {
+        that.setData({
+          userId: res.data.id
+        })
+      },
+      fail(res) {
+        app.openConfirm();
+      }
+    });
+    wx.getSystemInfo({
+      success: function(res) {
+        let height = res.windowHeight * 0.1;
+        let heightC = res.windowHeight - height - 12;
+        that.setData({
+          upHeight: height,
+          contentHeight: heightC
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+    let that = this;
+    that.getAppData(false);
+  },
+  getAppData: function(isSearch) {
     var that = this;
+    wx.showToast({
+      title: '数据加载中',
+      icon: 'loading'
+    });
+
+
     var msg_s = app.deepCopy(app.cacheConsts());
     msg_s.head.servCode = '100009';
-    msg_s.body.userid = "1";
+    msg_s.body.userid = that.data.userId;
+    msg_s.body.key = that.data.key;
+    msg_s.body.page = that.data.page;
+    msg_s.body.rows = that.data.rows;
     app.sendM(msg_s);
     //消息回调
     wx.onSocketMessage(function(data) {
+      wx.hideToast();
+      wx.showToast({
+        title: '数据加载完成',
+        icon: 'success',
+        duration: 2000
+      });
+
       var json = JSON.parse(data.data);
       console.log(json);
       if (json.state === 'ok') {
-        that.setData({
-          items: json.resultMap.result
-        })
+        let data_old = that.data.items;
+        let data_new = json.resultMap.result.rows;
+        if (isSearch) {
+          that.setData({
+            items: data_new,
+            cName: ""
+          })
+        } else {
+          for (var i = 0; i < data_new.length; i++) {
+            data_old.push(data_new[i]);
+          }
+          that.setData({
+            items: data_old
+          })
+        }
       } else {
         wx.showModal({
-          content: '获取客户信息失败，请重试',
+          content: '获取设备信息失败，请重试',
           showCancel: false
         });
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
+  bindKeyInput: function(e) {
+    this.setData({
+      key: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
+  lower: function(e) {
+    let that = this;
+    that.setData({
+      page: that.data.page + 1
+    })
+    that.getAppData(false);
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+  getAppDataSearch: function() {
+    let that = this;
+    that.getAppData(true);
   }
 })
