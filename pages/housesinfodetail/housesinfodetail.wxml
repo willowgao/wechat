@@ -1,4 +1,7 @@
 <!--pages/housesinfodetail/housesinfodetail.wxml-->
+<!-- 引入过滤器 -->
+<wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
+
 <view class='border_view' style='margin:10px;'>{{item.buildname}}
 </view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
@@ -6,14 +9,14 @@
     <label>楼盘地址：{{item.buildaddress}}</label>
   </view>
   <view class="weui-media-box__title">
-    <label>所属区域：{{item.buildarea}}</label>
+    <label>所属区域：{{elf.getArea(item.buildarea)}}</label>
   </view>
   <view class="weui-media-box__title">
     <label>楼盘户数：{{item.buildcount}}</label>
   </view>
-  <view class="weui-media-box__title">
+  <!-- <view class="weui-media-box__title">
     <label>开发商：{{item.cAreaName}}</label>
-  </view>
+  </view> -->
   <view class="weui-media-box__title">
     <label>物业公司：{{item.cid}}</label>
   </view>

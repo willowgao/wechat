@@ -9,7 +9,13 @@ Page({
     inputVal: "",
     items: [],
     userId: null,
-    buildname: ""
+    buildname: "",
+
+    scrollTop: 0,
+    upHeight: 30,
+    contentHeight: 30,
+    page: 1,
+    rows: 8,
   },
 
   /**
@@ -27,7 +33,19 @@ Page({
       fail(res) {
         app.openConfirm();
       }
-    })
+    });
+    wx.getSystemInfo({
+      success: function(res) {
+        let height = res.windowHeight * 0.1;
+        let heightC = res.windowHeight - height - 12;
+        that.setData({
+          upHeight: height,
+          contentHeight: heightC
+        })
+        console.log(height);
+        console.log(heightC);
+      }
+    });
   },
 
   /**
@@ -37,47 +55,6 @@ Page({
     this.getAppData();
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  },
   showInput: function() {
     this.setData({
       inputShowed: true
@@ -101,17 +78,37 @@ Page({
   },
   getAppData: function() {
     let that = this;
+    wx.showToast({
+      title: '数据加载中',
+      icon: 'loading'
+    });
+
     let msg_s = app.deepCopy(app.cacheConsts());
     msg_s.head.servCode = '100007';
     msg_s.body.userid = that.data.userId;
     msg_s.body.buildname = that.data.buildname;
+    msg_s.body.page = that.data.page;
+    msg_s.body.rows = that.data.rows;
+
     app.sendM(msg_s);
     //消息回调
     wx.onSocketMessage(function(data) {
+      wx.hideToast();
+      wx.showToast({
+        title: '数据加载完成',
+        icon: 'success',
+        duration: 1000
+      });
+
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
+        let data_old = that.data.items;
+        let data_new = json.resultMap.result.rows;
+        for (var i = 0; i < data_new.length; i++) {
+          data_old.push(data_new[i]);
+        }
         that.setData({
-          items: json.resultMap.result
+          items: data_old
         })
       } else {
         wx.showModal({
@@ -140,5 +137,12 @@ Page({
         }
       }
     });
+  },
+  lower: function (e) {
+    let that = this;
+    that.setData({
+      page: that.data.page + 1
+    })
+    that.getAppData();
   }
 })
