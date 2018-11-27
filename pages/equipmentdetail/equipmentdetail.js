@@ -56,7 +56,7 @@ Page({
       if (json.state === 'ok') {
         that.setData({
           item: json.resultMap.result,
-          picArray: json.resultMap.result.devPic.split(",")
+          picArray: json.resultMap.result.dev_pic.split(",")
         })
         console.log(that.data.picArray);
       } else {
