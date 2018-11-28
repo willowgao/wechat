@@ -1,5 +1,8 @@
 // pages/equipment/equipment.js
 var app = getApp(); //获取应用实例
+var util = require("/../../utils/util.js");
+var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 Page({
 
   /**
@@ -16,6 +19,15 @@ Page({
     contentHeight: 30,
     page: 1,
     rows: 8,
+    markers: [],
+    isMap: false,
+    latitude: "",
+    longitude: "",
+
+    array: ['全部区域', '江岸区', '江汉区', '硚口区', '汉阳区', '武昌区',
+      '洪山区', '青山区', '东西湖区', '蔡甸区', '江夏区', '黄陂区', '汉南区', '新洲区'
+    ],
+    index: 0,
   },
 
   /**
@@ -43,9 +55,27 @@ Page({
           contentHeight: heightC
         })
       }
+    });
+    // 实例化API核心类
+    qqmapsdk = new QQMapWX({
+      key: 'XMEBZ-IXNCU-6K4VM-2VFLR-7XOE7-J7BXG'
+    });
+  },
+  onShow: function() {
+    var that = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        let locations = latitude + "," + longitude;
+        that.setData({
+          latitude: latitude,
+          longitude: longitude
+        })
+      }
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -71,14 +101,13 @@ Page({
     //消息回调
     wx.onSocketMessage(function(data) {
       wx.hideToast();
-      wx.showToast({
-        title: '数据加载完成',
-        icon: 'success',
-        duration: 2000
-      });
+      // wx.showToast({
+      //   title: '数据加载完成',
+      //   icon: 'success',
+      //   duration: 2000
+      // });
 
       var json = JSON.parse(data.data);
-      console.log(json);
       if (json.state === 'ok') {
         let data_old = that.data.items;
         let data_new = json.resultMap.result.rows;
@@ -87,13 +116,42 @@ Page({
             items: data_new,
             cName: ""
           })
+          that.markPoint(data_new);
         } else {
-          for (var i = 0; i < data_new.length; i++) {
-            data_old.push(data_new[i]);
+          let term1 = data_new.length === 0;
+          let term2 = function() {
+            let len_old = data_old.length;
+            if (len_old > 0 && len_old <= that.data.rows) {
+              if (data_old[0].id === data_new[0].id) {
+                return true;
+              }
+            }
+            return false;
+          };
+          let term3 = function() {
+            let len_old = data_old.length;
+            let num = that.data.rows - 1;
+            if (len_old > that.data.rows && data_old[data_old.length - num].id === data_new[0].id) {
+              return true;
+            }
+            return false;
           }
-          that.setData({
-            items: data_old
-          })
+
+          if (term1 || term2() || term3()) {
+            wx.showToast({
+              title: '没有更多的数据',
+              icon: 'success',
+              duration: 1000
+            });
+          } else {
+            for (var i = 0; i < data_new.length; i++) {
+              data_old.push(data_new[i]);
+            }
+            that.setData({
+              items: data_old
+            })
+            that.markPoint(data_old);
+          }
         }
       } else {
         wx.showModal({
@@ -118,5 +176,43 @@ Page({
   getAppDataSearch: function() {
     let that = this;
     that.getAppData(true);
+  },
+  bindPickerChange: function(e) {
+    let that = this;
+    that.setData({
+      buildarea: util.getNo(e.detail.value)
+    })
+    that.getAppData(true);
+  },
+  toggleShow: function() {
+    var that = this;
+    if (that.data.isMap) {
+      that.setData({
+        isMap: false
+      })
+    } else {
+      that.setData({
+        isMap: true
+      })
+    }
+  },
+  markPoint: function(rows) {
+    let that = this;
+    var mks = [];
+    for (var i = 0; i < rows.length; i++) {
+      let location = rows[i].dev_position.split(",");
+      mks.push({ // 获取返回结果，放到mks数组中
+        title: rows[i].dev_batchno,
+        id: rows[i].id,
+        latitude: location[1],
+        longitude: location[0],
+        iconPath: "../../utils/pic/location.png", //图标路径
+        width: 35,
+        height: 35
+      })
+    }
+    that.setData({ //设置markers属性，将搜索结果显示在地图中
+      markers: mks
+    })
   }
 })

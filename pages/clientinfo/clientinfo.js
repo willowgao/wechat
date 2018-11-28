@@ -73,28 +73,57 @@ Page({
     //消息回调
     wx.onSocketMessage(function(data) {
       wx.hideToast();
-      wx.showToast({
-        title: '数据加载完成',
-        icon: 'success',
-        duration: 2000
-      });
+      // wx.showToast({
+      //   title: '数据加载完成',
+      //   icon: 'success',
+      //   duration: 2000
+      // });
 
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
         let data_old = that.data.items;
         let data_new = json.resultMap.result.rows;
+
+        // let term_one
         if (isSearch) {
           that.setData({
             items: data_new,
             cName: ""
           })
         } else {
-          for (var i = 0; i < data_new.length; i++) {
-            data_old.push(data_new[i]);
+          let term1 = data_new.length === 0;
+          let term2 = function() {
+            let len_old = data_old.length;
+            if (len_old > 0 && len_old <= that.data.rows) {
+              if (data_old[0].id === data_new[0].id) {
+                return true;
+              }
+            }
+            return false;
+          };
+          let term3 = function() {
+            let len_old = data_old.length;
+            let num = that.data.rows - 1;
+            if (len_old > that.data.rows && data_old[data_old.length - num].id === data_new[0].id) {
+              return true;
+            }
+            return false;
           }
-          that.setData({
-            items: data_old
-          })
+
+          if (term1 || term2() || term3()) {
+            wx.showToast({
+              title: '没有更多的数据',
+              icon: 'success',
+              duration: 1000
+            });
+          } else {
+            for (var i = 0; i < data_new.length; i++) {
+              data_old.push(data_new[i]);
+            }
+            that.setData({
+              items: data_old
+            })
+          }
         }
       } else {
         wx.showModal({

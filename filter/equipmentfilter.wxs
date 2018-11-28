@@ -23,6 +23,9 @@ var elf = {
     return "";
   },
   getType: function(type) {
+    if (type === "0") {
+      return "未知型号";
+    }
     if (type === "1") {
       return "单面";
     }
