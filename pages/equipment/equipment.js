@@ -18,7 +18,7 @@ Page({
     upHeight: 30,
     contentHeight: 30,
     page: 1,
-    rows: 8,
+    rows: 20,
     markers: [],
     isMap: false,
     latitude: "",
@@ -130,7 +130,7 @@ Page({
           };
           let term3 = function() {
             let len_old = data_old.length;
-            let num = that.data.rows - 1;
+            let num = data_new.length;
             if (len_old > that.data.rows && data_old[data_old.length - num].id === data_new[0].id) {
               return true;
             }
