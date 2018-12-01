@@ -31,6 +31,6 @@
 
 
   <view class="weui-article__p" wx:for="{{picArray}}" wx:for-index="index" wx:for-item="pic" wx:key="key">
-    <image class="weui-article__img" src="{{pic}}" />
+    <image style='width:100%;' src="{{pic}}" />
   </view>
 </view>

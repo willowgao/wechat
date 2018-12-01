@@ -28,6 +28,7 @@ Page({
       '洪山区', '青山区', '东西湖区', '蔡甸区', '江夏区', '黄陂区', '汉南区', '新洲区'
     ],
     index: 0,
+    devArea:""
   },
 
   /**
@@ -95,6 +96,7 @@ Page({
     msg_s.head.servCode = '100009';
     msg_s.body.userid = that.data.userId;
     msg_s.body.key = that.data.key;
+    msg_s.body.devArea = that.data.devArea;
     msg_s.body.page = that.data.page;
     msg_s.body.rows = that.data.rows;
     app.sendM(msg_s);
@@ -180,7 +182,7 @@ Page({
   bindPickerChange: function(e) {
     let that = this;
     that.setData({
-      buildarea: util.getNo(e.detail.value)
+      devArea: util.getNo(e.detail.value)
     })
     that.getAppData(true);
   },
