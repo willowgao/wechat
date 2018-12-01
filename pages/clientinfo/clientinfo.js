@@ -16,7 +16,7 @@ Page({
     upHeight: 30,
     contentHeight: 30,
     page: 1,
-    rows: 8,
+    rows: 20,
   },
 
   /**
@@ -53,31 +53,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    this.getAppData();
+    this.getAppData(false);
   },
-
-  showInput: function() {
-    this.setData({
-      inputShowed: true
-    });
-  },
-  hideInput: function() {
-    this.setData({
-      inputVal: "",
-      inputShowed: false
-    });
-  },
-  clearInput: function() {
-    this.setData({
-      inputVal: ""
-    });
-  },
-  inputTyping: function(e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-  },
-  getAppData: function() {
+  getAppData: function(isSearch) {
     wx.showToast({
       title: '数据加载中',
       icon: 'loading'
@@ -95,22 +73,58 @@ Page({
     //消息回调
     wx.onSocketMessage(function(data) {
       wx.hideToast();
-      wx.showToast({
-        title: '数据加载完成',
-        icon: 'success',
-        duration: 2000
-      });
+      // wx.showToast({
+      //   title: '数据加载完成',
+      //   icon: 'success',
+      //   duration: 2000
+      // });
 
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
         let data_old = that.data.items;
         let data_new = json.resultMap.result.rows;
-        for (var i = 0; i < data_new.length; i++) {
-          data_old.push(data_new[i]);
+
+        // let term_one
+        if (isSearch) {
+          that.setData({
+            items: data_new,
+            cName: ""
+          })
+        } else {
+          let term1 = data_new.length === 0;
+          let term2 = function() {
+            let len_old = data_old.length;
+            if (len_old > 0 && len_old <= that.data.rows) {
+              if (data_old[0].id === data_new[0].id) {
+                return true;
+              }
+            }
+            return false;
+          };
+          let term3 = function() {
+            let len_old = data_old.length;
+            let num = data_new.length;
+            if (len_old > that.data.rows && data_old[data_old.length - num].id === data_new[0].id) {
+              return true;
+            }
+            return false;
+          }
+
+          if (term1 || term2() || term3()) {
+            wx.showToast({
+              title: '没有更多的数据',
+              icon: 'success',
+              duration: 1000
+            });
+          } else {
+            for (var i = 0; i < data_new.length; i++) {
+              data_old.push(data_new[i]);
+            }
+            that.setData({
+              items: data_old
+            })
+          }
         }
-        that.setData({
-          items: data_old
-        })
       } else {
         wx.showModal({
           content: '获取客户信息失败，请重试',
@@ -127,8 +141,12 @@ Page({
   lower: function(e) {
     let that = this;
     that.setData({
-      page:that.data.page+1
+      page: that.data.page + 1
     })
-    that.getAppData();
+    that.getAppData(false);
+  },
+  getAppDataSearch: function() {
+    let that = this;
+    that.getAppData(true);
   }
 })

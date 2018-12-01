@@ -39,7 +39,59 @@ function formatTimeD(number, format) {
   return format;
 }
 
+function getNo(name){
+
+  switch (name) {
+    case "0":
+      return "";
+      break;
+    case "1":
+      return "02";
+      break;
+    case "2":
+      return "03";
+      break;
+    case "3":
+      return "04";
+      break;
+    case "4":
+      return "05";
+      break;
+    case "5":
+      return "06";
+      break;
+    case "6":
+      return "07";
+      break;
+    case "7":
+      return "08";
+      break;
+    case "8":
+      return "09";
+      break;
+    case "9":
+      return "10";
+      break;
+    case "10":
+      return "11";
+      break;
+    case "11":
+      return "12";
+      break;
+    case "12":
+      return "13";
+      break;
+    case "13":
+      return "14";
+      break;
+    default:
+      return "";
+  }
+
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatTimeD: formatTimeD
+  formatTimeD: formatTimeD,
+  getNo: getNo
 }

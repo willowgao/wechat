@@ -54,9 +54,10 @@ Page({
       var json = JSON.parse(data.data);
       console.log(json);
       if (json.state === 'ok') {
+        let picArray = json.resultMap.result.dev_pic.split(",");
         that.setData({
           item: json.resultMap.result,
-          picArray: json.resultMap.result.devPic.split(",")
+          picArray: picArray.slice(0, (picArray.length-1))
         })
         console.log(that.data.picArray);
       } else {
