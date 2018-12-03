@@ -2,7 +2,7 @@
 <wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
 
 <view class="page">
-  <view class="page__bd" style='height:{{upHeight}}rpx;'>
+  <view class="page__bd" style='height:{{upHeight}}rpx;height:120rpx;'>
     <view class='page_row' bindtap="suo">
       <view class="search">
         <view class="df search_arr">
@@ -16,7 +16,7 @@
   <view class="weui-panel weui-panel_access">
     <view class="weui-flex">
       <view class="weui-flex__item">
-        <view class="weui-panel__hd">楼盘列表</view>
+        <view class="yzw-title">楼盘列表</view>
       </view>
       <view class="weui-flex__item" style='height:12px;'>
         <view style='float:right;'>
@@ -29,8 +29,8 @@
     <scroll-view scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
       <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         <navigator url="../housesinfodetail/housesinfodetail?buildid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" style='height:75%;width:75%;margin:6px' src="../../utils/pic/lp.png" />
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg"  style='height:300rpx; width:150rpx;'>
+            <image class="weui-media-box__thumb" src="../../utils/pic/lp.png" />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
             <view class="weui-media-box__title">
@@ -42,6 +42,8 @@
                   <label>楼盘户数：{{item.buildcount}}</label>
                 </view>
               </view>
+            </view>
+            <view class="weui-flex">
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
                   <label>楼盘入住户数：{{item.buildoccupancy}}</label>
@@ -54,6 +56,8 @@
                   <label>楼盘所属区域：{{elf.getArea(item.buildarea)}}</label>
                 </view>
               </view>
+            </view>
+            <view class="weui-flex">
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
                   <label>楼盘地址：{{item.buildaddress}}</label>

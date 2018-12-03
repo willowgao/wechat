@@ -12,18 +12,19 @@
     padding: 12px 15px 12px 35px;
 }
 
-.search{
-  width: 80%;
-}
+.search{ width: 100%; }
+
 .search_arr {
-  border: 1px solid #d0d0d0;
   border-radius: 10rpx;
   margin-left: 20rpx;
+  background: #efefef;
+ width:95%;position: relative;
 }
 .search_arr input{
-  margin-left: 60rpx;
-  height: 60rpx;
+  margin-left: 90rpx;
   border-radius: 5px;
+  height:120rpx;
+  line-height:120rpx;
 }
 .bc_text {
   line-height: 68rpx;
@@ -32,24 +33,33 @@
 }
  
 .sousuo {
-  margin-left: 15rpx;
-  width: 15%;
+  margin-left: 25rpx;
+  width: 22%;
   line-height: 200%;
   text-align: center;
-  border: 1px solid #d0d0d0;
   border-radius: 10rpx;
-  background-color:rgb(96, 189, 234);
+  background-color:#17c9f3;
+  position: absolute;
+   top:25rpx; 
+   right: 20rpx;
+   color: #fff;
+
 }
 .page_row{
   display: flex;
   flex-direction: row
-}
+} 
 .searchcion {
-  margin: 10rpx 10rpx 10rpx 10rpx;
+  margin: 32rpx 25rpx 10rpx 10rpx;
   position: absolute;
   left:25rpx;
   z-index: 2;
   width: 20px;
   height: 20px;
   text-align: center;
+line-height:90rpx;
 }
+.yzw-title{color: #3e3e3e; height: 110rpx; line-height: 110rpx; border-bottom: 1px solid #e5e5e5;width: 90%; margin: 0 auto;}
+
+.weui-media-box__desc{ line-height: 44rpx; font-size: 26rpx;}
+.weui-media-box__thumb{ background: #ffe9cd;margin:6px}
