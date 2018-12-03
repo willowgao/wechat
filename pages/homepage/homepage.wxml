@@ -5,15 +5,15 @@
 <view class='page'>
   <view class="weui-flex" style='padding-top:10px;'>
     <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 30px 0 30px;height:40px;width:40px;' src='../../utils/pic/kh_prod.png' bindtap='getUserI'></image>
+      <image class="item" style='margin:20px 10px 0 10px;height:80px;width:80px;' src='../../utils/pic/kh_prod.png' bindtap='getUserI'></image>
       <span style='margin:0 30px;'>客户</span>
     </view>
     <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 30px 0 30px;height:40px;width:40px;' src='../../utils/pic/lp_prod.png' bindtap='getHouseI'></image>
+      <image class="item" style='margin:20px 10px 0 10px;height:80px;width:80px;' src='../../utils/pic/lp_prod.png' bindtap='getHouseI'></image>
       <span style='margin:0 30px;'>楼盘</span>
     </view>
     <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 30px 0 30px;height:40px;width:40px;' src='../../utils/pic/sb_prod.png' bindtap='getEquipmentI'></image>
+      <image class="item" style='margin:20px 10px 0 10px;height:80px;width:80px;' src='../../utils/pic/sb_prod.png' bindtap='getEquipmentI'></image>
       <span style='margin:0 30px;'>设备</span>
     </view>
   </view>
@@ -21,21 +21,23 @@
   <view class="weui-panel weui-panel_access">
     <view class="weui-flex">
       <view class="weui-flex__item">
-        <view class="weui-panel__hd">推荐点位</view>
+        <view class="yzw-title">推荐点位</view>
       </view>
       <view class="weui-flex__item">
         <view style='float:right;' wx:if="{{!isMap}}">
-          <image class="item" style='height:30px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
+          <image class="item" style='height:50px;width:36px;margin-right:30px;margin-top:7px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
         </view>
         <view style='float:right;' wx:if="{{isMap}}">
-          <image class="item" style='height:30px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
+          <image class="item" style='height:50px;width:36px;margin-right:30px;margin-top:7px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
         </view>
       </view>
+    
     </view>
+    <view style="border-top:1px solid #e5e5e5; width:100%;"></view>
     <view wx:if="{{!isMap}}">
       <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         <navigator url="../clientinfodetail/clientinfodetail?cid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style='background:#e9e3fe;'>
             <image class="weui-media-box__thumb" style='height:75%;width:75%;margin:6px' src="../../utils/pic/sb.png" />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
@@ -55,9 +57,12 @@
                   <label>设备状态：{{elf.getStatus(item.dev_status)}}</label>
                 </view>
               </view>
+              
+            </view>
+            <view class="weui-flex">
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
-                  <label>| 设备等级：{{elf.getLevel(item.dev_level)}}</label>
+                  <label>设备等级：<span>{{elf.getLevel(item.dev_level)}}</span></label>
                 </view>
               </view>
             </view>
@@ -66,9 +71,10 @@
             </view>
           </view>
         </navigator>
+    
       </view>
       <view class="weui-panel__ft">
-        <view class="weui-cell weui-cell_access weui-cell_link">
+        <view class="weui-cell weui-cell_access weui-cell_link" style='text-align:center;color:#73d9ff;'>
           <view class="weui-cell__bd" bindtap='getEquipmentI'>查看更多</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>

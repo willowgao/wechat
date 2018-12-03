@@ -12,3 +12,13 @@
 .item {
   width: 30%;
 }
+.yzw-title{
+  border: none;
+  margin-left: 40rpx;
+  margin-top: 40rpx;
+  font-size: 34rpx;
+  color: #3e3e3e;
+}
+.weui-media-box__desc{ line-height: 44rpx; font-size: 26rpx;}
+.weui-media-box__desc span{ color: #f00;}
+

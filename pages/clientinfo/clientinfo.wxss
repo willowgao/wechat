@@ -43,7 +43,7 @@
 .page_row{
   display: flex;
   flex-direction: row
-}
+} 
 .searchcion {
   margin: 10rpx 10rpx 10rpx 10rpx;
   position: absolute;
