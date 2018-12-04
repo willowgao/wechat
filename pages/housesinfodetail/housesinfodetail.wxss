@@ -7,7 +7,7 @@
 .view_mg{
   margin: 5rpx;
 }
-.yzw-title-bg{ margin: 10px; background-image: url('../../utils/pic/detail-bg.png') no-repeat center;color: #fff; line-height: 162rpx; height: 162rpx; width: 95%; background-color: #029cf2;border: none; text-align: center;}
+.yzw-title-bg{ margin: 10px; background-image: url('../../utils/pic/detail-bg.png') no-repeat center;color: #000; line-height: 162rpx; height: 162rpx; width: 95%; background-color: #13d3f6;border: none; text-align: center;}
 .weui-media-box__title{ line-height: 62rpx;}
 .weui-media-box__desc{color:#17c9f3;}
 .weui-flex{margin-top:10px;}
