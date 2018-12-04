@@ -2,7 +2,7 @@
 <!-- 引入过滤器 -->
 <wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
 
-<view class='border_view' style='margin:10px;'>{{item.buildname}}
+<view class='border_view yzw-title-bg'>{{item.buildname}}
 </view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
   <view class="weui-media-box__title">

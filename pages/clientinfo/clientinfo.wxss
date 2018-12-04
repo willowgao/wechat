@@ -42,6 +42,7 @@
    top:25rpx; 
    right: 20rpx;
    color: #fff;
+   z-index: 10;
 
 }
 .page_row{
