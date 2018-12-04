@@ -1,0 +1,2 @@
+/* pages/signin/signin.wxss */
+@import "../../libs/weui.wxss";

@@ -3,7 +3,7 @@
 
 <view class="page">
   <view class="page__bd" style='height:{{upHeight}}rpx;height:120rpx;'>
-    <view class='page_row' bindtap="suo">
+    <view class='page_row'>
       <view class="search">
         <view class="df search_arr">
           <icon class="searchcion" size='19' type='search'></icon>
