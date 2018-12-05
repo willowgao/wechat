@@ -3,17 +3,17 @@
 <wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
 
 <view class='page'>
-  <view class="weui-flex" style='padding-top:10px;'>
+  <view class="weui-flex" >
     <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 10px 0 10px;height:80px;width:80px;' src='../../utils/pic/kh_prod.png' bindtap='getUserI'></image>
+      <image class="item" style='margin:20px 10px 0 10px;height:60px;width:60px;' src='../../utils/pic/kh_prod.png' bindtap='getUserI'></image>
       <span style='margin:0 30px;'>客户</span>
     </view>
     <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 10px 0 10px;height:80px;width:80px;' src='../../utils/pic/lp_prod.png' bindtap='getHouseI'></image>
+      <image class="item" style='margin:20px 10px 0 10px;height:60px;width:60px;' src='../../utils/pic/lp_prod.png' bindtap='getHouseI'></image>
       <span style='margin:0 30px;'>楼盘</span>
     </view>
     <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 10px 0 10px;height:80px;width:80px;' src='../../utils/pic/sb_prod.png' bindtap='getEquipmentI'></image>
+      <image class="item" style='margin:20px 10px 0 10px;height:60px;width:60px;' src='../../utils/pic/sb_prod.png' bindtap='getEquipmentI'></image>
       <span style='margin:0 30px;'>设备</span>
     </view>
   </view>

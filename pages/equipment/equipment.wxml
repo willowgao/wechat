@@ -21,14 +21,14 @@
       <view class="weui-flex__item" style='height:12px;'>
         <view style='float:right;'>
           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <image class="item" style='height:30px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/sx.png'></image>
+            <image class="item" style='height:45px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/sx.png'></image>
           </picker>
         </view>
         <view style='float:right;' wx:if="{{!isMap}}">
-          <image class="item" style='height:30px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
+          <image class="item" style='height:45px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
         </view>
         <view style='float:right;' wx:if="{{isMap}}">
-          <image class="item" style='height:30px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
+          <image class="item" style='height:45px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
         </view>
       </view>
     </view>
