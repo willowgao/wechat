@@ -1,12 +1,24 @@
 // pages/signin/signin.js
-Page({
+import WxValidate from '../../utils/WxValidate.js'
+var validate;
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
     showTopTips: false,
     index: 1,
+    formData: {
+      cName: "",
+      cArea: "",
+      cAddress: "",
+      usercode: "",
+      uEmail: "",
+      userpwd: "",
+      cCorporation: "",
+      cCorpTel: ""
+    },
 
     array: ['江岸区', '江汉区', '硚口区', '汉阳区', '武昌区',
       '洪山区', '青山区', '东西湖区', '蔡甸区', '江夏区', '黄陂区', '汉南区', '新洲区'
@@ -52,7 +64,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.initValidate()
   },
 
   /**
@@ -108,5 +120,50 @@ Page({
     this.setData({
       index: e.detail.value
     })
-  }
+  },
+  searchBox: function(e) {
+    const that = this;
+    if (!this.validate.checkForm(e.detail.value)) {
+      const error = this.validate.errorList[0];
+      wx.showToast({
+        title: `${error.msg} `,
+        icon: 'none'
+      });
+      return false;
+    }
+
+
+    that.setData({
+      "formData.cName": e.detail.value.cName,
+      "formData.cArea": e.detail.value.cArea,
+      "formData.cAddress": e.detail.value.cAddress,
+      "formData.usercode": e.detail.value.usercode,
+      "formData.first": e.detail.value.username,
+      "formData.uEmail": e.detail.value.uEmail,
+      "formData.userpwd": e.detail.value.userpwd,
+      "formData.cCorporation": e.detail.value.cCorporation,
+      "formData.cCorpTel": e.detail.value.cCorpTel
+    })
+    debugger
+  },
+  initValidate() {
+    this.validate = new WxValidate({
+      name: {
+        required: true,
+        maxlength: 20
+      },
+      cCorpTel: {
+        tel: true
+      }
+    }, {
+      name: {
+        required: '请输入校区名称!',
+        maxlength: '名称不得超过20字!'
+      },
+      cCorpTel: {
+        tel: '电话格式不正确!'
+      }
+    })
+  },
+
 })

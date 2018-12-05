@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/signin/signin",
     "pages/homepage/homepage",
     "pages/clientinfo/clientinfo",
     "pages/clientinfodetail/clientinfodetail",
@@ -10,7 +11,6 @@
     "pages/housesinfo/housesinfo",
     "pages/housesinfodetail/housesinfodetail",
     "pages/equipment/equipment",
-    "pages/signin/signin",
     "pages/equipmentdetail/equipmentdetail"
   ],
   "window": {
