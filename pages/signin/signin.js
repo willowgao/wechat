@@ -6,6 +6,11 @@ Page({
    */
   data: {
     showTopTips: false,
+    index: 1,
+
+    array: ['江岸区', '江汉区', '硚口区', '汉阳区', '武昌区',
+      '洪山区', '青山区', '东西湖区', '蔡甸区', '江夏区', '黄陂区', '汉南区', '新洲区'
+    ],
 
     radioItems: [{
         name: 'cell standard',
@@ -97,5 +102,11 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+  bindPickerChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
   }
 })

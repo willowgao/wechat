@@ -10,6 +10,7 @@
     "pages/housesinfo/housesinfo",
     "pages/housesinfodetail/housesinfodetail",
     "pages/equipment/equipment",
+    "pages/signin/signin",
     "pages/equipmentdetail/equipmentdetail"
   ],
   "window": {
