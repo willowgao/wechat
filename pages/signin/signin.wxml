@@ -14,7 +14,7 @@
         <view class="weui-label">所属区域:</view>
       </view>
       <view class="weui-cell__bd">
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <picker bindchange="bindPickerChange" name="cArea" value="{{index}}" range="{{array}}">
           <view class="picker">
             {{array[index]}}
           </view>
@@ -26,7 +26,7 @@
         <view class="weui-label">详细地址:</view>
       </view>
       <view class="weui-cell__bd">
-        <textarea class="weui-textarea" name="cAddress" style="height: 3.3em" />
+        <textarea class="weui-textarea" placeholder="请输入详细地址" name="cAddress" style="height: 3.3em" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">

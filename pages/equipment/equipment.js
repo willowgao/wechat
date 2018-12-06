@@ -103,11 +103,6 @@ Page({
     //消息回调
     wx.onSocketMessage(function(data) {
       wx.hideToast();
-      // wx.showToast({
-      //   title: '数据加载完成',
-      //   icon: 'success',
-      //   duration: 2000
-      // });
 
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {

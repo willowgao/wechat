@@ -141,5 +141,10 @@ Page({
         });
       }
     })
+  },
+  signin: function() {
+    wx.navigateTo({
+      url: '../signin/signin'
+    })
   }
 })

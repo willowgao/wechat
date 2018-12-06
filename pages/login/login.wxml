@@ -12,8 +12,8 @@
   <button class='weui-btn' type='primary' bindtap='sendMsg'>登录</button>
 </view>
 <view style='margin:10px 30px;'>
-  <button class='weui-btn' type='default'>注册</button>
+  <button class='weui-btn' type='default' bindtap='signin'>注册</button>
 </view>
 <view style='margin:10px 30px;float:right;'>
-  <navigator url="/navigate/navigate?title=navigate" hover-class="navigator-hover">忘记密码</navigator>
+  <navigator url="../info/info?id=2" hover-class="navigator-hover">忘记密码</navigator>
 </view>

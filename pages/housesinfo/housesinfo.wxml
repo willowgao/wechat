@@ -46,7 +46,7 @@
             <view class="weui-flex">
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
-                  <label>楼盘入住户数：{{item.buildoccupancy}}</label>
+                  <label>楼盘价格：{{item.buildoccupancy}}</label>
                 </view>
               </view>
             </view>
