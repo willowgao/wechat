@@ -1,13 +1,13 @@
 <view class="weui-panel_access" style='margin-top:100px;'>
-  <view class="weui-panel__bd">
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" style='height:100px' hover-class="weui-cell_active">
-      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+  <view class="weui-panel__bd" style='text-align:center;'>
+    
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style='text-align:center; width:100%;margin-bottom:30rpx;'>
         <icon type="success" size="60"></icon>
       </view>
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
         <view style='height:60px;font-size:0.8em;'>{{info}}</view>
       </view>
-    </navigator>
+  
 
     <button class="weui-btn" type="primary" style='margin:10px 15px;' bindtap='back'>返回</button>
   </view>
