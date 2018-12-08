@@ -38,7 +38,7 @@
   <view class='yzw-cate-title'>
     <span>|</span>设备上刊记录</view>
   <view class="weui-panel weui-panel_access">
-    <scroll-view wx:if="{{contractItem.length>0}}" scroll-y style='height:125px;' bindscrolltolower="lower" lower-threshold="15">
+    <scroll-view wx:if="{{contractItem.length>0}}" scroll-y style='height:160px;' bindscrolltolower="lower" lower-threshold="15">
       <view class="weui-panel__bd" wx:for="{{contractItem}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="weui-media-box__title">

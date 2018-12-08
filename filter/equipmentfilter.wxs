@@ -24,13 +24,13 @@ var elf = {
   },
   getType: function(type) {
     if (type === "0") {
-      return "未知型号";
+      return "J";
     }
     if (type === "1") {
-      return "单面";
+      return "J1";
     }
     if (type === "2") {
-      return "双面";
+      return "J2";
     }
 
     return "";

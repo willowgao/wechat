@@ -1,6 +1,6 @@
 <!--pages/signin/signin.wxml-->
 
-<form bindsubmit=''>
+<form bindsubmit='searchBox'>
   <view class="yzw-line">
     <input class="weui-input" name="cName" placeholder="单位名称" />
   </view>

@@ -15,21 +15,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this;
+
     var cid = options.cid;
-    this.setData({
+    that.setData({
       cid: cid
     });
     wx.getStorage({
       key: 'userinfo',
       success(res) {
-        this.setData({
+        that.setData({
           userId: res.data.id
         })
       },
       fail(res) {
         app.openConfirm();
       }
-    });
+    })
   },
 
   /**
@@ -39,8 +41,8 @@ Page({
     var that = this;
     var msg_s = app.deepCopy(app.cacheConsts());
     msg_s.head.servCode = '100006';
-    msg_s.body.userid = that.userId;
-    msg_s.body.cid = that.cid;
+    msg_s.body.userid = that.data.userId;
+    msg_s.body.cid = that.data.cid;
     app.sendM(msg_s);
     //消息回调
     wx.onSocketMessage(function(data) {
