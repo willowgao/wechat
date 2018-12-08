@@ -5,10 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info: "",
-    info1: "提交成功！您的注册信息已经提交完毕，我们会在一个工作日内完成审批，并叫审核结果电话反馈至您，请您注意接听。",
-    info2: "请联系佳达美工作人员进行处理，电话号码是：027-88216766"
-
+    flag: true
   },
 
   /**
@@ -18,11 +15,11 @@ Page({
     var id = options.id;
     if (id === "1") {
       this.setData({
-        info: this.data.info1
+        flag: true
       });
     } else if (id === "2") {
       this.setData({
-        info: this.data.info2
+        flag: false
       });
     }
   },
@@ -75,9 +72,14 @@ Page({
   onShareAppMessage: function() {
 
   },
-  back:function(){
+  back: function() {
     wx.navigateTo({
       url: '../homepage/homepage'
+    })
+  },
+  call: function() {
+    wx.makePhoneCall({
+      phoneNumber: '027-88216766',
     })
   }
 })
