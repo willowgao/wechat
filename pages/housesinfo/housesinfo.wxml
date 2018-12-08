@@ -21,7 +21,7 @@
       <view class="weui-flex__item" style='height:12px;'>
         <view style='float:right;'>
           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <image class="item" style='height:45px;width:30px;margin-right:30px;margin-top:7px;' src='../../utils/pic/sx.png'></image>
+            <image class="item" style='height:35px;width:25px;margin-right:30px;margin-top:7px;' src='../../utils/pic/sx.png'></image>
           </picker>
         </view>
       </view>
@@ -29,7 +29,7 @@
     <scroll-view scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
       <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         <navigator url="../housesinfodetail/housesinfodetail?buildid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg"  style='height:220rpx; width:150rpx;'>
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style='height:220rpx; width:150rpx;'>
             <image class="weui-media-box__thumb" src="../../utils/pic/lp.png" />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
@@ -39,11 +39,21 @@
             <view class="weui-flex">
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
-                  <label>楼盘户数：{{item.buildcount}}</label>
+                  <label>建筑年份：{{item.buildposition}}年</label>
+                </view>
+              </view>
+              <view class="weui-flex__item">
+                <view class="weui-media-box__desc">
+                  <label>设备数量：{{item.devcount}}个</label>
                 </view>
               </view>
             </view>
             <view class="weui-flex">
+              <view class="weui-flex__item">
+                <view class="weui-media-box__desc">
+                  <label>楼盘户数：{{item.buildcount}}</label>
+                </view>
+              </view>
               <view class="weui-flex__item">
                 <view class="weui-media-box__desc">
                   <label>楼盘价格：{{item.buildoccupancy}}</label>
@@ -64,9 +74,15 @@
                 </view>
               </view>
             </view>
-            <!-- <view class="weui-media-box__desc">
-            <label>客户地址：{{item.cAddress}}</label>
-          </view> -->
+            <view class="weui-flex">
+              <view class="weui-flex__item">
+                <view class="weui-media-box__desc">
+                  <label>物业名称：{{item.wyname}}</label>
+                </view>
+              </view>
+            </view>
+            
+            
           </view>
         </navigator>
       </view>

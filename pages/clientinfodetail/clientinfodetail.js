@@ -6,8 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cid:null,
-    item:{}
+    userId: "",
+    cid: null,
+    item: {}
   },
 
   /**
@@ -16,8 +17,19 @@ Page({
   onLoad: function(options) {
     var cid = options.cid;
     this.setData({
-      cid:cid
-    })
+      cid: cid
+    });
+    wx.getStorage({
+      key: 'userinfo',
+      success(res) {
+        this.setData({
+          userId: res.data.id
+        })
+      },
+      fail(res) {
+        app.openConfirm();
+      }
+    });
   },
 
   /**
@@ -27,15 +39,18 @@ Page({
     var that = this;
     var msg_s = app.deepCopy(app.cacheConsts());
     msg_s.head.servCode = '100006';
-    msg_s.body.userid = "1";
+    msg_s.body.userid = that.userId;
     msg_s.body.cid = that.cid;
     app.sendM(msg_s);
     //消息回调
-    wx.onSocketMessage(function (data) {
+    wx.onSocketMessage(function(data) {
       var json = JSON.parse(data.data);
+      let result = json.resultMap.result;
+      result.createDate = that.formatDate(result.createDate);
+
       if (json.state === 'ok') {
         that.setData({
-          item: json.resultMap.result
+          item: result
         })
       } else {
         wx.showModal({
@@ -45,46 +60,12 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+  formatDate: function(obj) {
+    var date = new Date(obj);
+    var y = 1900 + date.getYear();
+    var m = "0" + (date.getMonth() + 1);
+    var d = "0" + date.getDate();
+    return y + "-" + m.substring(m.length - 2, m.length) + "-" + d.substring(d.length - 2, d.length);
   }
+
 })

@@ -38,7 +38,7 @@ Page({
     var that = this;
     var msg_s = app.deepCopy(app.cacheConsts());
     msg_s.head.servCode = '100004';
-    msg_s.body.userid = "1";
+    // msg_s.body.userid = "1";
     app.sendM(msg_s);
     wx.showToast({
       title: '数据加载中',
@@ -132,5 +132,10 @@ Page({
         isMap: true
       })
     }
+  },
+  call: function() {
+    wx.makePhoneCall({
+      phoneNumber: '027-88216766',
+    })
   }
 })

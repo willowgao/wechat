@@ -22,3 +22,11 @@
 .weui-media-box__desc{ line-height: 44rpx; font-size: 26rpx;}
 .weui-media-box__desc span{ color: #f00;}
 
+.logo{
+  width: 100%;
+  position: fixed;
+  bottom:0px;
+  display: flex;
+  justify-content: center;
+}
+

@@ -6,31 +6,24 @@
 </view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
   <view class="weui-media-box__title">
-    <label>楼盘地址：{{item.buildaddress}}</label>
+    <label>设备数量：{{item.devcount}}个</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>建筑年份：{{item.buildposition}}年</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>楼盘价格：{{item.buildoccupancy}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>楼盘户数：{{item.buildcount}}</label>
   </view>
   <view class="weui-media-box__title">
     <label>所属区域：{{elf.getArea(item.buildarea)}}</label>
   </view>
   <view class="weui-media-box__title">
-    <label>楼盘户数：{{item.buildcount}}</label>
+    <label>楼盘地址：{{item.buildaddress}}</label>
   </view>
-  <!-- <view class="weui-media-box__title">
-    <label>开发商：{{item.cAreaName}}</label>
-  </view> -->
   <view class="weui-media-box__title">
-    <label>物业公司：{{item.cid}}</label>
+    <label>物业公司：{{item.wyname}}</label>
   </view>
-
-  <!-- <view class="weui-flex" style='margin:10px;'>
-    <view class="weui-flex__item">
-      <view class="weui-media-box__desc">
-        <label>创建时间：{{item.createDate}}</label>
-      </view>
-    </view>
-    <view class="weui-flex__item">
-      <view class="weui-media-box__desc">
-        <label>| 业务员：{{item.salerName}}</label>
-      </view>
-    </view>
-  </view> -->
 </view>

@@ -4,36 +4,61 @@
 
 <view class='border_view yzw-title-bg'>{{item.devBatchno}}</view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
-<view class='yzw-cate-title'><span>|</span>合同信息</view>
-      <view class="weui-media-box__title">
-        <label>设备编号：{{item.dev_batchno}}</label>
-      </view>
-      <view class="weui-media-box__title">
-        <label>合同编码：{{item.wycontract_id}}</label>
-      </view>
-      <view class="weui-media-box__title">
-        <label>客户名称：{{item.cName}}</label>
-      </view>
+  <view class='yzw-cate-title'>
+    <span>|</span>合同信息</view>
+  <view class="weui-media-box__title">
+    <label>设备编号：{{item.dev_batchno}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>合同编码：{{item.wycontract_id}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>客户名称：{{item.cName}}</label>
+  </view>
 
-<view class='yzw-cate-title'><span>|</span>地区信息</view>
-        <view class="weui-media-box__title">
-          <label>所属区域：{{elf.getArea(item.dev_area)}}</label>
+  <view class='yzw-cate-title'>
+    <span>|</span>地区信息</view>
+  <view class="weui-media-box__title">
+    <label>所属区域：{{elf.getArea(item.dev_area)}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>所属楼盘：{{item.buildName}}</label>
+  </view>
+  <view class='yzw-cate-title'>
+    <span>|</span>设备信息</view>
+  <view class="weui-media-box__title">
+    <label>设备类型：{{elf.getType(item.dev_type)}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>设备等级：{{elf.getLevel(item.dev_level)}}</label>
+  </view>
+  <view class="weui-media-box__title">
+    <label>安装地址：{{item.dev_address}}</label>
+  </view>
+  <view class='yzw-cate-title'>
+    <span>|</span>设备上刊记录</view>
+  <view class="weui-panel weui-panel_access">
+    <scroll-view wx:if="{{contractItem.length>0}}" scroll-y style='height:125px;' bindscrolltolower="lower" lower-threshold="15">
+      <view class="weui-panel__bd" wx:for="{{contractItem}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">
+            <label>合同编号：{{item.contractcode}}</label>
+          </view>
+          <view class="weui-media-box__title">
+            <label>设备编号：{{item.devBatchno}}</label>
+          </view>
+          <view class="weui-media-box__title">
+            <label>起始日期：{{item.sdate}}</label>
+          </view>
+          <view class="weui-media-box__title">
+            <label>截至日期：{{item.edate}}</label>
+          </view>
         </view>
-        <view class="weui-media-box__title">
-          <label>所属楼盘：{{item.buildName}}</label>
-        </view>
-        <view class='yzw-cate-title'><span>|</span>设备信息</view>
-        <view class="weui-media-box__title">
-          <label>设备类型：{{elf.getType(item.dev_type)}}</label>
-        </view>
-        <view class="weui-media-box__title">
-          <label>设备等级：{{elf.getLevel(item.dev_level)}}</label>
-        </view>
-        <view class="weui-media-box__title">
-          <label>安装地址：{{item.dev_address}}</label>
-        </view>
-
-<view class='yzw-cate-title'><span>|</span>图片信息</view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='yzw-cate-title'>
+    <span>|</span>图片信息</view>
   <view class="weui-article__p" wx:for="{{picArray}}" wx:for-index="index" wx:for-item="pic" wx:key="key">
     <image style='width:100%;' src="{{pic}}" />
   </view>

@@ -77,11 +77,12 @@ var elf = {
     }
     return "";
   }
+
 }
 
 module.exports = {
   getLevel: elf.getLevel,
   getStatus: elf.getStatus,
   getType: elf.getType,
-  getArea: elf.getArea
+  getArea: elf.getArea,
 }
