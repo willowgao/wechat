@@ -1,3 +1,11 @@
 /* pages/signin/signin.wxss */
 @import "../../libs/weui.wxss";
-.weui-input{border: 1px solid #ddd; width: 90%;margin-top: 10px;margin-left:20rpx;padding-left:30rpx;border-radius: 20rpx;}
+
+.weui-input {
+  border: 1px solid #ddd;
+  width: 90%;
+  margin-top: 10px;
+  margin-left: 20rpx;
+  padding-left: 30rpx;
+  border-radius: 20rpx;
+}

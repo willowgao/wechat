@@ -1,42 +1,42 @@
 <!--pages/signin/signin.wxml-->
 
-  <form bindsubmit=''>
-      <view class="yzw-line">
-        <input class="weui-input" name="cName" placeholder="请输入单位名称"  />
+<form bindsubmit=''>
+  <view class="yzw-line">
+    <input class="weui-input" name="cName" placeholder="单位名称" />
+  </view>
+  <view class="yzw-line">
+    <picker bindchange="bindPickerChange" name="cArea" value="{{index}}" range="{{array}}">
+      <view class="picker weui-input">
+        {{array[index]}}
       </view>
-      <view class="yzw-line">
-        <picker bindchange="bindPickerChange"  name="cArea" value="{{index}}" range="{{array}}">
-          <view class="picker weui-input">
-            {{array[index]}}
-          </view>
-        </picker>
-      </view>
-      <view class="">
-        <input class="weui-input" name="cAddress" placeholder="请输入详细地址" />
-      </view>
-      <view class="yzw-line">
-        <input class="weui-input" name="usercode" placeholder="请输入用户名" />
-      </view>
-      <view class="yzw-line">
-        <input class="weui-input" name="uEmail" placeholder="请输入邮箱" />
-      </view>
+    </picker>
+  </view>
+  <view class="">
+    <input class="weui-input" name="cAddress" placeholder="详细地址" />
+  </view>
+  <view class="yzw-line">
+    <input class="weui-input" name="usercode" placeholder="用户名" />
+  </view>
+  <view class="yzw-line">
+    <input class="weui-input" name="uEmail" placeholder="邮箱" />
+  </view>
 
-      <view class="yzw-line">
-        <input class="weui-input" name="cCorporation" placeholder="请输入联系人" />
-      </view>
+  <view class="yzw-line">
+    <input class="weui-input" name="cCorporation" placeholder="联系人" />
+  </view>
 
-      <view class="yzw-line">
-        <input class="weui-input" name="cCorpTel" placeholder="请输入手机号" />
-      </view>
+  <view class="yzw-line">
+    <input class="weui-input" name="cCorpTel" placeholder="手机号" />
+  </view>
 
-      <view class="yzw-line">
-        <input type='password' class="weui-input" name="userpwd" placeholder="请输入登录密码" />
-      </view>
+  <view class="yzw-line">
+    <input type='password' class="weui-input" name="userpwd" placeholder="登录密码" />
+  </view>
 
-      <view class="yzw-line">
-        <input type='password' class="weui-input" name="userpwd2" placeholder="请输入确认密码" />
-      </view>
-    <view>
-      <button class="weui-btn" style='margin:16px 15px;' type="primary" form-type="submit">注册</button>
-    </view>
-  </form>
+  <view class="yzw-line">
+    <input type='password' class="weui-input" name="userpwd2" placeholder="确认密码" />
+  </view>
+  <view>
+    <button class="weui-btn" style='margin:16px 15px;' type="primary" form-type="submit">注册</button>
+  </view>
+</form>

@@ -46,7 +46,7 @@ Page({
     const that = this;
     if (that.data.index === 0) {
       wx.showToast({
-        title: '请选择所属区域',
+        title: '所属区域',
         icon: 'none'
       });
       return false;
@@ -93,7 +93,6 @@ Page({
     //消息回调
     wx.onSocketMessage(function(data) {
       wx.hideToast();
-      debugger
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
         let rel = json.resultMap.result.rel;
