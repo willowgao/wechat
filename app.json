@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/homepage/homepage",
+    "pages/login/login",
     "pages/info/info",
     "pages/signin/signin",
     "pages/clientinfo/clientinfo",
     "pages/clientinfodetail/clientinfodetail",
-    "pages/login/login",
     "pages/reminder/reminder",
     "pages/index/index",
     "pages/logs/logs",
