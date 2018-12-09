@@ -28,7 +28,7 @@ Page({
       '洪山区', '青山区', '东西湖区', '蔡甸区', '江夏区', '黄陂区', '汉南区', '新洲区'
     ],
     index: 0,
-    devArea:""
+    devArea: ""
   },
 
   /**
@@ -113,7 +113,7 @@ Page({
             items: data_new,
             cName: ""
           })
-          that.markPoint(data_new);
+          // that.markPoint(data_new);
         } else {
           let term1 = data_new.length === 0;
           let term2 = function() {
@@ -147,7 +147,7 @@ Page({
             that.setData({
               items: data_old
             })
-            that.markPoint(data_old);
+            // that.markPoint(data_old);
           }
         }
       } else {
@@ -188,10 +188,31 @@ Page({
         isMap: false
       })
     } else {
+      that.getMapData();
       that.setData({
         isMap: true
       })
     }
+  },
+  getMapData: function() {
+    var that = this;
+    var msg_s = app.deepCopy(app.cacheConsts());
+    msg_s.head.servCode = '100009';
+    msg_s.body.userid = that.data.userId;
+    app.sendM(msg_s);
+    //消息回调
+    wx.onSocketMessage(function(data) {
+      var json = JSON.parse(data.data);
+      if (json.state === 'ok') {
+        let data_new = json.resultMap.result.rows;
+        that.markPoint(data_new);
+      } else {
+        wx.showModal({
+          content: '获取设备信息失败，请重试',
+          showCancel: false
+        });
+      }
+    })
   },
   markPoint: function(rows) {
     let that = this;
