@@ -28,7 +28,10 @@ Page({
       '洪山区', '青山区', '东西湖区', '蔡甸区', '江夏区', '黄陂区', '汉南区', '新洲区'
     ],
     index: 0,
-    devArea: ""
+    devArea: "",
+    circles:{
+
+    }
   },
 
   /**
@@ -231,6 +234,11 @@ Page({
     }
     that.setData({ //设置markers属性，将搜索结果显示在地图中
       markers: mks
+    })
+  },
+  markertap(id) {
+    wx.navigateTo({
+      url: '../equipmentdetail/equipmentdetail?devid =' + id.markerId
     })
   }
 })

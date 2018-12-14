@@ -59,7 +59,7 @@
       </view>
     </scroll-view>
     <view wx:if="{{isMap}}">
-    <map id="myMap" style="width: 100%; height: 500px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}"></map>
+    <map id="myMap" style="width: 100%; height: 500px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}" bindmarkertap="markertap" show-location show-compass circles="{{circles}}"></map>
   </view>
   </view>
 </view>
