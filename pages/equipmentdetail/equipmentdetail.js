@@ -60,7 +60,7 @@ Page({
         if (conS.length > 0) {
           for (let i = 0; i < conS.length; i++) {
             let obj = conS[i];
-            obj.sdate =  that.formatDate(obj.sdate);
+            obj.sdate = that.formatDate(obj.sdate);
             obj.edate = that.formatDate(obj.edate);
           }
 
@@ -128,5 +128,14 @@ Page({
     var m = "0" + (date.getMonth() + 1);
     var d = "0" + date.getDate();
     return y + "-" + m.substring(m.length - 2, m.length) + "-" + d.substring(d.length - 2, d.length);
+  },
+  previewImage: function(e) {
+    var current = e.target.dataset.src;
+    let arr = [];
+    arr.push(current);
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接
+      urls: arr // 需要预览的图片http链接列表
+    })
   }
 })
