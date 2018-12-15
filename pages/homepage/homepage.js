@@ -8,7 +8,8 @@ Page({
     markers: [],
     isMap: false,
     latitude: "",
-    longitude: ""
+    longitude: "",
+    circles: []
   },
   onLoad: function() {
     // 实例化API核心类
@@ -24,9 +25,18 @@ Page({
         let latitude = res.latitude
         let longitude = res.longitude
         let locations = latitude + "," + longitude;
+        let cir = {};
+        cir.latitude = res.latitude;
+        cir.longitude = res.longitude
+        cir.radius = 1000;
+        cir.color = "#E0FFFF";
+        cir.fillColor = "#87CEEB50";
+        let cirArr = [];
+        cirArr.push(cir);
         that.setData({
           latitude: latitude,
-          longitude: longitude
+          longitude: longitude,
+          circles: cirArr
         })
       }
     })
@@ -136,6 +146,11 @@ Page({
   call: function() {
     wx.makePhoneCall({
       phoneNumber: '027-88216766',
+    })
+  },
+  markertap(id) {
+    wx.navigateTo({
+      url: '../equipmentdetail/equipmentdetail?devid =' + id.markerId
     })
   }
 })

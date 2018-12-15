@@ -83,7 +83,7 @@
     </view>
   </view>
   <view wx:if="{{isMap}}">
-    <map id="myMap" style="width: 100%; height: 500px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}"></map>
+    <map id="myMap" style="width: 100%; height: 500px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}" bindmarkertap="markertap" show-location="true" show-compass circles="{{circles}}"></map>
   </view>
   <view class="weui-footer logo">
     <view class="weui-footer__text" style='font-size:1.2em'>广告投放联系电话：<span style="color:#87CEFA" bindtap='call'>027-88216766</span></view>

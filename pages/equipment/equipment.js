@@ -29,9 +29,7 @@ Page({
     ],
     index: 0,
     devArea: "",
-    circles:{
-
-    }
+    circles: []
   },
 
   /**
@@ -73,9 +71,18 @@ Page({
         let latitude = res.latitude
         let longitude = res.longitude
         let locations = latitude + "," + longitude;
+        let cir = {};
+        cir.latitude = res.latitude;
+        cir.longitude = res.longitude
+        cir.radius = 1000;
+        cir.color = "#E0FFFF";
+        cir.fillColor = "#87CEEB50";
+        let cirArr = [];
+        cirArr.push(cir);
         that.setData({
           latitude: latitude,
-          longitude: longitude
+          longitude: longitude,
+          circles: cirArr
         })
       }
     })
