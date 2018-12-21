@@ -3,38 +3,72 @@
 <wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
 
 <view class='page'>
-  <view class="weui-flex">
-    <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 20px 0 20px;height:70px;width:70px;' src='../../utils/pic/kh_prod.png' bindtap='getUserI'></image>
-      <span style='margin:0 30px;'>客户</span>
+  <view class="weui-flex bannerbg" style='background:url("../../utils/pic/bananer-bg.png") center top;'>
+  <view class="weui-flex__ite">
+      <image class="item" src='../../utils/pic/kh_prod.png' bindtap='getUserI'></image>
+      <p>我</p>
     </view>
-    <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 20px 0 20px;height:70px;width:70px;' src='../../utils/pic/lp_prod.png' bindtap='getHouseI'></image>
-      <span style='margin:0 30px;'>楼盘</span>
+    <view class="weui-flex__ite">
+      <image class="item" src='../../utils/pic/lp_prod.png' bindtap='getHouseI'></image>
+      <p>楼盘</p>
     </view>
-    <view class="weui-flex__ite" style='text-align:center;'>
-      <image class="item" style='margin:20px 20px 0 20px;height:70px;width:70px;' src='../../utils/pic/sb_prod.png' bindtap='getEquipmentI'></image>
-      <span style='margin:0 30px;'>设备</span>
+    <view class="weui-flex__ite">
+      <image class="item" src='../../utils/pic/sb_prod.png' bindtap='getEquipmentI'></image>
+      <p>设备</p>
     </view>
-  </view>
-
-  <view class="weui-panel weui-panel_access">
-    <view class="weui-flex">
+    <view class="clear"></view>
+    <p class="yzw-main" >
+        <view class="weui-flex">
       <view class="weui-flex__item">
         <view class="yzw-title">推荐点位</view>
       </view>
       <view class="weui-flex__item">
         <view style='float:right;' wx:if="{{!isMap}}">
-          <image class="item" style='height:35px;width:25px;margin-right:30px;margin-top:7px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
+          <image class="item" style='height:25px;width:18px;margin-right:30px;margin-top:7px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
         </view>
         <view style='float:right;' wx:if="{{isMap}}">
           <image class="item" style='height:35px;width:25px;margin-right:30px;margin-top:7px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
         </view>
       </view>
+      
 
     </view>
     <view style="border-top:1px solid #e5e5e5; width:100%;"></view>
-    <scroll-view wx:if="{{!isMap}}" scroll-y style='height:300px;' bindscrolltolower="lower" lower-threshold="15">
+    <scroll-view wx:if="{{!isMap}}" scroll-y style='height:430px;' bindscrolltolower="lower" lower-threshold="15">
+      <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+        <navigator url="../equipmentdetail/equipmentdetail?devid={{item.id}}" class="" hover-class="">
+    <view class='sb-list'>
+      <ul>
+        <li>
+          <div class="sb-list-left">设备名称 <image src='../../utils/pic/sb.png'></image></div>
+          <div class="sb-list-right">{{item.dev_batchno}}</div>
+        </li>
+        <li>
+          <div class="sb-list-left">设备类型 </div>
+          <div class="sb-list-right">{{elf.getType(item.dev_type)}}</div>
+        </li>
+        <li>
+          <div class="sb-list-left">设备状态</div>
+          <div class="sb-list-right">{{elf.getStatus(item.dev_status)}}</div>
+        </li>
+        <li>
+          <div class="sb-list-left">设备等级</div>
+          <div class="sb-list-right">{{elf.getLevel(item.dev_level)}}</div>
+        </li>
+        <li>
+          <div class="sb-list-left">设备地址</div>
+          <div class="sb-list-right">{{item.dev_address}}</div>
+        </li>
+      </ul>
+    </view>
+    </navigator>
+      </view>
+    </scroll-view>
+
+
+
+
+    <!--<scroll-view wx:if="{{!isMap}}" scroll-y style='height:300px;' bindscrolltolower="lower" lower-threshold="15">
       <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         <navigator url="../equipmentdetail/equipmentdetail?devid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style='background:#e9e3fe;'>
@@ -80,12 +114,26 @@
         <view class="weui-cell__bd" bindtap='getEquipmentI'>查看更多</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
+    </view>-->
+    <view wx:if="{{!isMap}}" class="weui-panel__ft">
+      <div class="bottom-more" bindtap='getEquipmentI'>
+        <image src='../../utils/pic/icon-more.png'></image>
+        查看更多
+      </div>
     </view>
+      </p>
+ 
+  
+  </view>
+
+  <view class="weui-panel weui-panel_access" >
+    
+    
   </view>
   <view wx:if="{{isMap}}">
     <map id="myMap" style="width: 100%; height: 500px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}" bindmarkertap="markertap" show-location="true" show-compass circles="{{circles}}"></map>
   </view>
   <view class="weui-footer logo">
-    <view class="weui-footer__text" style='font-size:1.2em'>广告投放联系电话：<span style="color:#87CEFA" bindtap='call'>027-88216766</span></view>
+    <view class="weui-footer__text" style='font-size:1em;margin-top:-26px;'>投放电话：<span style="color:#ff7304" bindtap='call'>027-88216766</span></view>
   </view>
 </view>
