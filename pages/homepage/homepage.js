@@ -6,7 +6,7 @@ Page({
   data: {
     items: [],
     markers: [],
-    isMap: false,
+    isMap: true,
     latitude: "",
     longitude: "",
     circles: []

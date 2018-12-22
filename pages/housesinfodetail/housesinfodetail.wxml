@@ -23,7 +23,7 @@
   <view class="weui-media-box__title">
     <label>楼盘地址：{{item.buildaddress}}</label>
   </view>
-  <view class="weui-media-box__title">
+  <!-- <view class="weui-media-box__title">
     <label>物业公司：{{item.wyname}}</label>
-  </view>
+  </view> -->
 </view>

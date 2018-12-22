@@ -47,7 +47,7 @@ Page({
     //消息回调
     wx.onSocketMessage(function(data) {
       var json = JSON.parse(data.data);
-      let result = json.resultMap.result;
+      let result = json.resultMap.result.custom;
       result.createDate = that.formatDate(result.createDate);
 
       if (json.state === 'ok') {

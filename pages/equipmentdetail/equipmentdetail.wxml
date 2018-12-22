@@ -5,6 +5,11 @@
 <view class='border_view yzw-title-bg'>{{item.dev_batchno}}</view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
   <view class='yzw-cate-title'>
+    <span>|</span>图片信息</view>
+  <view class="weui-article__p" wx:for="{{picArray}}" wx:for-index="index" wx:for-item="pic" wx:key="key">
+    <image style='width:100%;' src="{{pic}}" data-src="{{pic}}" bindtap="previewImage" />
+  </view>
+  <view class='yzw-cate-title'>
     <span>|</span>合同信息</view>
   <view class="weui-media-box__title">
     <label>设备编号：{{item.dev_batchno}}</label>
@@ -56,10 +61,5 @@
         </view>
       </view>
     </scroll-view>
-  </view>
-  <view class='yzw-cate-title'>
-    <span>|</span>图片信息</view>
-  <view class="weui-article__p" wx:for="{{picArray}}" wx:for-index="index" wx:for-item="pic" wx:key="key">
-    <image style='width:100%;' src="{{pic}}" data-src="{{pic}}" bindtap="previewImage"/>
   </view>
 </view>
