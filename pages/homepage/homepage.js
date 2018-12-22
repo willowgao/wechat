@@ -59,7 +59,7 @@ Page({
       wx.hideToast();
       wx.showToast({
         title: '数据加载完成',
-        icon: 'succes0s',
+        icon: 'success',
         duration: 1000
       });
       var json = JSON.parse(data.data);

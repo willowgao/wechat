@@ -8,7 +8,8 @@ Page({
   data: {
     userId: "",
     cid: null,
-    item: {}
+    item: {},
+    contracts: []
   },
 
   /**
@@ -48,11 +49,18 @@ Page({
     wx.onSocketMessage(function(data) {
       var json = JSON.parse(data.data);
       let result = json.resultMap.result.custom;
+      let arr = json.resultMap.result.contracts;
+      for (let i = 0; i < arr.length; i++) {
+        arr[i].sdate = that.formatDate(arr[i].sdate);
+        arr[i].edate = that.formatDate(arr[i].edate);
+      }
+
       result.createDate = that.formatDate(result.createDate);
 
       if (json.state === 'ok') {
         that.setData({
-          item: result
+          item: result,
+          contracts: json.resultMap.result.contracts
         })
       } else {
         wx.showModal({
@@ -68,6 +76,11 @@ Page({
     var m = "0" + (date.getMonth() + 1);
     var d = "0" + date.getDate();
     return y + "-" + m.substring(m.length - 2, m.length) + "-" + d.substring(d.length - 2, d.length);
+  },
+  goto: function() {
+    wx.navigateTo({
+      url: '../equipment/equipment?cid=' + this.data.cid
+    })
   }
 
 })

@@ -12,3 +12,5 @@
 .weui-media-box__title{ line-height: 72rpx; color: #b9b9b9; border-bottom: 1px solid #e6e6e6;}
 .weui-media-box__desc{color:#17c9f3;}
 .weui-flex{margin-top:10px;}
+
+.yzw-cate-title{ background: #ededed; color: #7b7b7b; height: 80rpx; line-height: 80rpx; padding-left: 15rpx;margin-bottom: 10rpx;}

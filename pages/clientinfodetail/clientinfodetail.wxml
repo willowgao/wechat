@@ -1,9 +1,28 @@
 <!--pages/clientinfodetail/clientinfodetail.wxml-->
 
-<view class='border_view yzw-title-bg'>{{item.cName}}
+<view class='border_view yzw-title-bg' bindtap='goto'>{{item.cName}}
   <label style='float:right;padding-right:20rpx;'>广告主</label>
 </view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
+  <view class='yzw-cate-title'>
+    <span>|</span>合同信息</view>
+  <view wx:for="{{contracts}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+    <view class="weui-media-box__title">
+      <label>起始日期：{{item.sdate}}</label>
+    </view>
+    <view class="weui-media-box__title">
+      <label>结束日期：{{item.edate}}</label>
+    </view>
+    <view class="weui-media-box__title">
+      <label>合同编码：{{item.contractcode}}</label>
+    </view>
+    <!-- <view class="weui-media-box__title">
+    <label>客户名称：{{item.cName}}</label>
+  </view> -->
+  </view>
+
+  <view class='yzw-cate-title'>
+    <span>|</span>客户信息</view>
   <view class="weui-media-box__title">
     <label>客户地址：{{item.cAddress}}</label>
   </view>

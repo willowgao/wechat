@@ -29,7 +29,9 @@ Page({
     ],
     index: 0,
     devArea: "",
-    circles: []
+    circles: [],
+    cid: "",
+    buildid: ""
   },
 
   /**
@@ -61,6 +63,14 @@ Page({
     // 实例化API核心类
     qqmapsdk = new QQMapWX({
       key: 'XMEBZ-IXNCU-6K4VM-2VFLR-7XOE7-J7BXG'
+    });
+
+    let buildid = options.buildid;
+    let cid = options.cid;
+
+    this.setData({
+      buildid: buildid === "undefined" ? "" : buildid,
+      cid: cid=== "undefined" ? "" : cid
     });
   },
   onShow: function() {
@@ -105,6 +115,9 @@ Page({
     var msg_s = app.deepCopy(app.cacheConsts());
     msg_s.head.servCode = '100009';
     msg_s.body.userid = that.data.userId;
+    msg_s.body.cid = that.data.cid;
+    msg_s.body.buildid = that.data.buildid;
+
     msg_s.body.key = that.data.key;
     msg_s.body.devArea = that.data.devArea;
     msg_s.body.page = that.data.page;
@@ -183,6 +196,7 @@ Page({
   getAppDataSearch: function() {
     let that = this;
     that.getAppData(true);
+    that.markPoint(this.data.items);
   },
   bindPickerChange: function(e) {
     let that = this;
