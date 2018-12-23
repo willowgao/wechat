@@ -134,9 +134,8 @@
   </view>
   <view wx:if="{{isMap}}">
     <map id="myMap" style="width: 100%; height: 500px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}" bindmarkertap="markertap" show-location="true" show-compass circles="{{circles}}">
-      <cover-view class="cover-view" style='position:absolute;right:0px;bottom:30px;'>
-        test
-        <cover-image class="cover-image" bindtap="tap1" src="../../utils/pic/icon-more.png"></cover-image>
+      <cover-view class="cover-view" bindtap='juli' style='position:absolute;right:0px;bottom:30px;font-size:0.8em;'>
+        半径：[{{index}}米]
       </cover-view>
     </map>
   </view>

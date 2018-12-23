@@ -9,7 +9,9 @@ Page({
     isMap: true,
     latitude: "",
     longitude: "",
-    circles: []
+    circles: [],
+    array: ['美国', '中国', '巴西', '日本', "1", "1", "1", "1", "1", "1", "1", "1", "1"],
+    index: 500,
   },
   onLoad: function() {
     // 实例化API核心类
@@ -24,11 +26,16 @@ Page({
       success(res) {
         let latitude = res.latitude
         let longitude = res.longitude
+        that.setData({
+          latitude: latitude,
+          longitude: longitude
+        })
+
         let locations = latitude + "," + longitude;
         let cir = {};
         cir.latitude = res.latitude;
         cir.longitude = res.longitude
-        cir.radius = 1000;
+        cir.radius = 500;
         cir.color = "#E0FFFF";
         cir.fillColor = "#87CEEB50";
         let cirArr = [];
@@ -152,5 +159,30 @@ Page({
     wx.navigateTo({
       url: '../equipmentdetail/equipmentdetail?devid =' + id.markerId
     })
+  },
+  juli: function() {
+    let that = this;
+    wx.showActionSheet({
+      itemList: ['1000米', '3000米', '5000米'],
+      success: function(res) {
+        if (!res.cancel) {
+          let index = 2000 * (res.tapIndex) + 1000;
+          let cir = {};
+          cir.latitude = that.data.latitude;
+          cir.longitude = that.data.longitude
+          cir.radius = index;
+          cir.color = "#E0FFFF";
+          cir.fillColor = "#87CEEB50";
+          let cirArr = [];
+          cirArr.push(cir);
+          console.log(cirArr)
+
+          that.setData({
+            circles: cirArr,
+            index: index
+          })
+        }
+      }
+    });
   }
 })

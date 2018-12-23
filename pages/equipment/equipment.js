@@ -70,7 +70,7 @@ Page({
 
     this.setData({
       buildid: buildid === "undefined" ? "" : buildid,
-      cid: cid=== "undefined" ? "" : cid
+      cid: cid === "undefined" ? "" : cid
     });
   },
   onShow: function() {
