@@ -2,7 +2,7 @@
 <!-- 引入过滤器 -->
 <wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
 
-<view class='border_view yzw-title-bg'>{{item.dev_batchno}}</view>
+<view class='border_view yzw-title-bg'><image src='../../utils/pic/sb_prod.png' style='width:34px; height:34px;position: absolute; left:10px; top:8px;'></image>{{item.dev_batchno}}</view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
   <view class='yzw-cate-title'>
     <span>|</span>图片信息</view>

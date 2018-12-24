@@ -32,14 +32,14 @@
 }
 .page{ position: relative;}
 .clear{ clear: both; }
-.bannerbg{ height:229px; background-color: #ccc; }
+.bannerbg{ height:229px; background: #ff7304;border-radius: 0 0 80rpx 80rpx;  }
 .weui-flex__ite{text-align:center;width:33%; height: 50%; float:left;color:#fff;}
 
  .weui-flex__ite image{margin:20px 20px 0 20px;height:34px; clear: both; margin-top: 60rpx;}
   .weui-flex__ite:first-child image{width: 29.5px;}
  .weui-flex__ite p{ clear: both; margin-top: 10rpx; display: block; font-weight: 500;}
- .yzw-main{ width: 94%;  position: absolute; top: 300rpx; left: 20rpx; height: auto;overflow: hidden;background:#fff;border-radius: 23rpx;}
- .sb-list{ padding-top: 20px; padding-bottom: 10px; border-bottom: 1px solid #e5e5e5; height: auto; overflow: hidden;  }
+ .yzw-main{ width: 94%;  position: absolute; top: 260rpx; left: 20rpx; height: auto;overflow: hidden;background:#fff;border-radius: 23rpx;}
+ .sb-list{ padding-top: 20px; padding-bottom: 10px; border-bottom: 1px solid #e5e5e5; height: auto; overflow: hidden;}
 
  .sb-list ul li{ width: 96%; height: 30px; line-height: 30px;  display: block; position: relative; color: #959595; font-size: 16px; padding-left:2%; padding-right: 2%; }
  .sb-list ul li .sb-list-left{ float: left; width: 50%;}
@@ -47,7 +47,7 @@
   .sb-list ul li .sb-list-right{ float: left; width: 50%; text-align: right;}
    .sb-list ul li:first-child{ font-size: 20px;color: #3e3e3e; margin-bottom: 15px;}
 
-   .bottom-more{ position: relative;  height:40px; width: 100%; display: block; line-height: 75px; text-align: center; color: #ff7304; font-size: 14px;  margin-top: 10px; padding-bottom: 20px;}
-   .bottom-more image{ width: 26px; height: 6px; position: absolute; top: 15px; left: 50%; margin-left: -14px }
+   .bottom-more{ position: relative;  height:40px; width: 100%; display: block; line-height: 65px; text-align: center; color: #ff7304; font-size: 14px;  margin-top: 10px; padding-bottom: 20px;}
+   .bottom-more image{ width: 26px; height: 6px; position: absolute; top: 10px; left: 50%; margin-left: -14px }
 page{ background: #f8f8f8; height: auto; overflow: hidden;}
 
