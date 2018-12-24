@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/homepage/homepage",
     "pages/info/info",
     "pages/signin/signin",
+    "pages/login/login",
     "pages/clientinfo/clientinfo",
     "pages/clientinfodetail/clientinfodetail",
     "pages/reminder/reminder",
