@@ -24,6 +24,15 @@
     <label>地址</label><span>{{item.dev_address}}</span>
   </view>
   <view class='yzw-cate-title'>
+    <span>|</span>地址信息</view>
+  <view class="detail-list">
+    <label>区域</label><span>{{elf.getArea(item.dev_area)}}</span>
+  </view>
+  <view class="detail-list">
+    <label>楼盘</label><span>{{item.buildName}}</span>
+  </view>
+  
+  <view class='yzw-cate-title'>
     <span>|</span>合同信息</view>
  
   <view class="detail-list">
@@ -33,15 +42,6 @@
     <label>客户</label><span>{{item.cName}}</span>
   </view>
 
-  <view class='yzw-cate-title'>
-    <span>|</span>地址信息</view>
-  <view class="detail-list">
-    <label>区域</label><span>{{elf.getArea(item.dev_area)}}</span>
-  </view>
-  <view class="detail-list">
-    <label>楼盘</label><span>{{item.buildName}}</span>
-  </view>
-  
   <view class='yzw-cate-title'>
     <span>|</span>设备上刊记录</view>
   <view class="weui-panel weui-panel_access">
