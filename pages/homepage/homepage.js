@@ -164,7 +164,7 @@ Page({
   juli: function() {
     let that = this;
     wx.showActionSheet({
-      itemList: ['1000米', '3000米', '5000米'],
+      itemList: ['1000m', '3000m', '5000m'],
       success: function(res) {
         if (!res.cancel) {
           let index = 2000 * (res.tapIndex) + 1000;
