@@ -1,5 +1,5 @@
 <view class="page">
-  <view class="page__bd" style='height:{{upHeight}}rpx;height:120rpx;'>
+  <view class="page__bd" style='height:{{upHeight}}rpx;height:85rpx;'>
     <view class='page_row'>
       <view class="search">
         <view class="df search_arr">
@@ -12,7 +12,7 @@
     </view>
   </view>
   <view class="weui-panel weui-panel_access">
-    <view class="yzw-title">客户列表</view>
+    <!--<view class="yzw-title">客户列表</view>-->
 
 
 <scroll-view scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
@@ -21,30 +21,30 @@
             <view class='sb-list' >
               <ul>
                 <li>
-                  <div class="sb-list-left">客户名称
-                    <image src='../../utils/pic/lp_prod.png'></image>
-                  </div>
-                  <div class="sb-list-right">{{item.cName}}</div>
+                  <!--<div class="sb-list-left">客户名称</div>-->
+                  <div class="sb-list-right" style="width:93%;text-align:left;padding-left:7%;"><image src='../../utils/pic/wo.png' ></image>{{item.cName}}</div>
+                  
                 </li>
                 <li>
-                  <div class="sb-list-left">联系人： </div>
+                  <div class="sb-list-left">联系人 </div>
                   <div class="sb-list-right">{{item.cCorporation}}</div>
                 </li>
                 <li>
-                  <div class="sb-list-left">联系电话：</div>
-                  <div class="sb-list-right">{{item.cCorpTel}}</div>
+                  <div class="sb-list-left">业务员</div>
+                  <div class="sb-list-right" style="color:#ff7304">{{item.salername}}</div>
                 </li>
                 <li>
-                  <div class="sb-list-left">业务员：</div>
-                  <div class="sb-list-right">{{item.salername}}</div>
+                  <div class="sb-list-left">联系电话</div>
+                  <div class="sb-list-right" style="color:#ff7304">{{item.cCorpTel}}</div>
                 </li>
                 <li>
-                  <div class="sb-list-left">客户地址：</div>
+                  <div class="sb-list-left">客户地址</div>
                   <div class="sb-list-right">{{item.cAddress}}</div>
                 </li>
                 
               </ul>
             </view>
+            
           </navigator>
         </view>
       </scroll-view>

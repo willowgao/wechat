@@ -31,13 +31,15 @@
   border-radius: 10rpx;
   margin-left: 20rpx;
   background: #efefef;
- width:95%;position: relative;
+ width:85%;
+ position: relative;
 }
 .search_arr input{
   margin-left: 90rpx;
   border-radius: 5px;
   height:90rpx;
   line-height:90rpx;
+   position: relative;
 }
 .bc_text {
   line-height: 68rpx;
@@ -79,11 +81,11 @@ line-height:90rpx;
 .weui-media-box__thumb{ background: #ffe9cd;margin:6px}
 
 .list-title{width:100%;position: relative;}
-.list-title-icon{position: absolute;right:30rpx;top:32rpx;}
+.list-title-icon{position: absolute;right:-76rpx;top:32rpx; z-index: 10;}
 
 .sb-list{ padding-top: 20px; padding-bottom: 10px; border-bottom: 1px solid #e5e5e5; height: auto; overflow: hidden;}
  .sb-list ul li{ width: 96%; height: 30px; line-height: 30px;  display: block; position: relative; color: #959595; font-size: 16px; padding-left:2%; padding-right: 2%; }
- .sb-list ul li .sb-list-left{ float: left; width: 50%;}
-  .sb-list ul li .sb-list-left image{ width: 26px; height: 26px; position: absolute; top: 0px; left: 100px;}
-  .sb-list ul li .sb-list-right{ float: left; width: 50%; text-align: right;}
+ .sb-list ul li .sb-list-left{ float: left; width: 30%; }
+  .sb-list ul li .sb-list-right image{ width: 19px; height: 19px; position: absolute; top: 5px; left: 10px;}
+  .sb-list ul li .sb-list-right{ float: left; width: 70%; text-align: right;}
    .sb-list ul li:first-child{ font-size: 20px;color: #3e3e3e; margin-bottom: 15px;}

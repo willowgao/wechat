@@ -1,39 +1,40 @@
 <!--pages/clientinfodetail/clientinfodetail.wxml-->
 
-<view class='border_view yzw-title-bg' bindtap='goto'><image src='../../utils/pic/kh_prod.png' style='width:29.5px; height:34px;position: absolute; left:10px; top:8px;'></image>{{item.cName}}
-  <!--<label style='float:right;padding-right:20rpx;'>广告主</label>-->
-</view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
+  
+
+  <view class='yzw-cate-title' bindtap='goto'>
+    <span>|</span>客户信息 <image src='../../utils/pic/more.png' style='width:40px;height:40px;float:right; margin-top:1px;margin-right:3px;'></image></view>
+  <view class="detail-list">
+    <label>名称</label><span>{{item.cName}}</span>
+  </view>
+  <view class="detail-list">
+    <label>负责人</label><span>{{item.cCorporation}}</span>
+  </view>
+  <view class="detail-list">
+    <label>电话</label><span style="color:#ff7304" bindtap="call()">{{item.cCorpTel}}</span>
+  </view>
+  <view class="detail-list">
+    <label>区域</label><span>{{item.cAreaName}}</span>
+  </view>
+  <view class="detail-list">
+    <label>地址</label><span>{{item.cAddress}}</span>
+  </view>
   <view class='yzw-cate-title'>
     <span>|</span>合同信息</view>
   <view wx:for="{{contracts}}" wx:for-index="index" wx:for-item="item" wx:key="key">
-    <view class="weui-media-box__title">
-      <label>起始日期：{{item.sdate}}</label>
+    <view class="detail-list">
+      <label style='width:24%;'>起始日期</label><span style='width:72%;'>{{item.sdate}}</span>
     </view>
-    <view class="weui-media-box__title">
-      <label>结束日期：{{item.edate}}</label>
+    <view class="detail-list">
+      <label style='width:24%;'>结束日期</label><span style='width:72%;'>{{item.edate}}</span>
     </view>
-    <view class="weui-media-box__title">
-      <label>合同编码：{{item.contractcode}}</label>
+    <view class="detail-list">
+      <label style='width:24%;'>合同编码</label><span style="color:#ff7304;width:72%;">{{item.contractcode}}</span>
     </view>
-    <!-- <view class="weui-media-box__title">
+    <!-- <view class="detail-list">
     <label>客户名称：{{item.cName}}</label>
   </view> -->
-  </view>
-
-  <view class='yzw-cate-title'>
-    <span>|</span>客户信息</view>
-  <view class="weui-media-box__title">
-    <label>客户地址：{{item.cAddress}}</label>
-  </view>
-  <view class="weui-media-box__title">
-    <label>负责人姓名：{{item.cCorporation}}</label>
-  </view>
-  <view class="weui-media-box__title">
-    <label>负责人电话：{{item.cCorpTel}}</label>
-  </view>
-  <view class="weui-media-box__title">
-    <label>所属区域：{{item.cAreaName}}</label>
   </view>
   <view class="weui-flex">
     <view class="weui-flex__item">
@@ -47,4 +48,5 @@
       </view>
     </view>
   </view>
+  
 </view>

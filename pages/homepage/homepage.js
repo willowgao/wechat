@@ -153,7 +153,7 @@ Page({
   },
   call: function() {
     wx.makePhoneCall({
-      phoneNumber: '027-88216766',
+      phoneNumber: '4006565139',
     })
   },
   markertap(id) {
@@ -164,7 +164,9 @@ Page({
   juli: function() {
     let that = this;
     wx.showActionSheet({
-      itemList: ['1000m', '3000m', '5000m'],
+
+      itemList: ['100m', '200m', '500m', '1000m', '1500m', '2000m'],
+
       success: function(res) {
         if (!res.cancel) {
           let index = 2000 * (res.tapIndex) + 1000;
