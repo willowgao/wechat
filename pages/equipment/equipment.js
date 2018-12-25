@@ -20,9 +20,10 @@ Page({
     page: 1,
     rows: 20,
     markers: [],
-    isMap: false,
+    isMap: true,
     latitude: "",
     longitude: "",
+    j_index: 500,
 
     array: ['全部区域', '江岸区', '江汉区', '硚口区', '汉阳区', '武昌区',
       '洪山区', '青山区', '东西湖区', '蔡甸区', '江夏区', '黄陂区', '汉南区', '新洲区'
@@ -261,5 +262,32 @@ Page({
     wx.navigateTo({
       url: '../equipmentdetail/equipmentdetail?devid =' + id.markerId
     })
+  },
+  juli: function () {
+    let that = this;
+    wx.showActionSheet({
+      itemList: ['1000m', '3000m', '5000m'],
+      success: function (res) {
+        if (!res.cancel) {
+          let index = 2000 * (res.tapIndex) + 1000;
+          let cir = {};
+          cir.latitude = that.data.latitude;
+          cir.longitude = that.data.longitude
+          cir.radius = index;
+          cir.color = "#E0FFFF";
+          cir.fillColor = "#87CEEB50";
+          let cirArr = [];
+          cirArr.push(cir);
+
+          let scale = 15 - res.tapIndex * 3;
+
+          that.setData({
+            circles: cirArr,
+            j_index: index,
+            scale: scale
+          })
+        }
+      }
+    });
   }
 })
