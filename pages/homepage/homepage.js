@@ -164,7 +164,9 @@ Page({
   juli: function() {
     let that = this;
     wx.showActionSheet({
+
       itemList: ['100m', '200m', '500m', '1000m', '1500m', '2000m'],
+
       success: function(res) {
         if (!res.cancel) {
           let index = 2000 * (res.tapIndex) + 1000;

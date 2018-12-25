@@ -124,9 +124,11 @@
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </view>-->
+
       <view wx:if="{{isMap}}" class='sb-list' style='padding-top:2px;padding-bottom:0;'>
         <map id="myMap" style="width: 100%; height: 67vh;" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" markers="{{markers}}" bindmarkertap="markertap" show-location="true" show-compass circles="{{circles}}">
           <cover-view class="cover-view" bindtap='juli' style='position:absolute;right:5px;top:5px;font-size:0.8em;'>
+
             半径：[{{index}}m]
           </cover-view>
         </map>
