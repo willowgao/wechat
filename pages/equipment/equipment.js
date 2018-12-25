@@ -32,7 +32,8 @@ Page({
     devArea: "",
     circles: [],
     cid: "",
-    buildid: ""
+    buildid: "",
+    scale:15
   },
 
   /**
