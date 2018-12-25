@@ -82,9 +82,9 @@ Page({
       url: '../equipment/equipment?cid=' + this.data.cid
     })
   },
-  call: function () {
+  call: function(event) {
     wx.makePhoneCall({
-      phoneNumber: '4006565139',
+      phoneNumber: this.data.item.cCorpTel,
     })
   }
 

@@ -268,8 +268,9 @@ Page({
     wx.showActionSheet({
       itemList: ['100m', '200m', '500m', '1000m', '1500m', '2000m'],
       success: function(res) {
+        let arr = [100, 200, 500, 1000, 1500, 2000];
         if (!res.cancel) {
-          let index = 2000 * (res.tapIndex) + 1000;
+          let index = arr[res.tapIndex];
           let cir = {};
           cir.latitude = that.data.latitude;
           cir.longitude = that.data.longitude
@@ -279,7 +280,7 @@ Page({
           let cirArr = [];
           cirArr.push(cir);
 
-          let scale = 15 - res.tapIndex * 3;
+          let scale = 18 - res.tapIndex;
 
           that.setData({
             circles: cirArr,

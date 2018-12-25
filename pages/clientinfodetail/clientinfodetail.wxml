@@ -12,7 +12,7 @@
     <label>负责人</label><span>{{item.cCorporation}}</span>
   </view>
   <view class="detail-list">
-    <label>电话</label><span style="color:#ff7304" bindtap="call()">{{item.cCorpTel}}</span>
+    <label>电话</label><span style="color:#ff7304" bindtap="call">{{item.cCorpTel}}</span>
   </view>
   <view class="detail-list">
     <label>区域</label><span>{{item.cAreaName}}</span>
