@@ -82,8 +82,6 @@ Page({
     msg_s.body.cCorporation = e.detail.value.cCorporation;
     msg_s.body.cCorpTel = e.detail.value.cCorpTel;
 
-
-    debugger
     wx.showToast({
       title: '数据加载中',
       icon: 'loading'
