@@ -79,7 +79,7 @@ Page({
   },
   call: function() {
     wx.makePhoneCall({
-      phoneNumber: '027-88216766',
+      phoneNumber: '400-6565-139',
     })
   }
 })

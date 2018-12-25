@@ -69,6 +69,6 @@ line-height:90rpx;
 
  .sb-list ul li{ width: 96%; height: 30px; line-height: 30px;  display: block; position: relative; color: #959595; font-size: 16px; padding-left:2%; padding-right: 2%; }
  .sb-list ul li .sb-list-left{ float: left; width: 30%;}
-  .sb-list ul li .sb-list-left image{ width: 26px; height: 26px; position: absolute; top: 0px; left: 100px;}
+  .sb-list ul li .sb-list-right image{ width: 19px; height: 19px; position: absolute; top: 5px; left: 10px;}
   .sb-list ul li .sb-list-right{ float: left; width: 70%; text-align: right;}
-   .sb-list ul li:first-child{ font-size: 16px;color: #3e3e3e; margin-bottom: 15px;}
+   .sb-list ul li:first-child{ font-size: 20px;color: #3e3e3e; margin-bottom: 15px;}

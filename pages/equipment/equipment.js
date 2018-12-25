@@ -20,7 +20,7 @@ Page({
     page: 1,
     rows: 20,
     markers: [],
-    isMap: false,
+    isMap: true,
     latitude: "",
     longitude: "",
 
@@ -261,5 +261,32 @@ Page({
     wx.navigateTo({
       url: '../equipmentdetail/equipmentdetail?devid =' + id.markerId
     })
+  },
+  juli: function () {
+    let that = this;
+    wx.showActionSheet({
+      itemList: ['100m', '200m', '500m', '1000m', '1500m', '2000m'],
+      success: function (res) {
+        if (!res.cancel) {
+          let index = 2000 * (res.tapIndex) + 1000;
+          let cir = {};
+          cir.latitude = that.data.latitude;
+          cir.longitude = that.data.longitude
+          cir.radius = index;
+          cir.color = "#E0FFFF";
+          cir.fillColor = "#87CEEB50";
+          let cirArr = [];
+          cirArr.push(cir);
+
+          let scale = 15 - res.tapIndex * 3;
+
+          that.setData({
+            circles: cirArr,
+            index: index,
+            scale: scale
+          })
+        }
+      }
+    });
   }
 })

@@ -81,6 +81,11 @@ Page({
     wx.navigateTo({
       url: '../equipment/equipment?cid=' + this.data.cid
     })
+  },
+  call: function () {
+    wx.makePhoneCall({
+      phoneNumber: '4006565139',
+    })
   }
 
 })

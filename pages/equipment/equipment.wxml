@@ -2,34 +2,32 @@
 <wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
 
 <view class="page">
-  <view class="page__bd" style='height:{{upHeight}}rpx;height:120rpx;'>
+  <view class="page__bd" style='height:{{upHeight}}rpx;height:85rpx;'>
     <view class='page_row'>
       <view class="search">
         <view class="df search_arr">
           <icon class="searchcion" size='19' type='search'></icon>
-          <input placeholder="请输入设备编码/设备地址" bindinput="bindKeyInput" />
-        </view>
-      </view>
-      <view class='sousuo' bindtap="getAppDataSearch">搜索</view>
-    </view>
-  </view>
-  <view class="weui-panel weui-panel_access">
-    <view class="weui-flex">
-      <view class="list-title">
-        <view class="yzw-title">设备名称</view>
-        <view class='list-title-icon' >
+          <input placeholder="设备编码/设备地址" bindinput="bindKeyInput" />
+          <view class='sousuo' bindtap="getAppDataSearch">搜索</view>
+          <view class='list-title-icon' >
           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
             <image class="item" style='height:25px;width:25px;' src='../../utils/pic/sx.png'></image>
           </picker>
         </view>
-        <view class='list-title-icon' wx:if="{{!isMap}}" style='right:100rpx;'>
-          <image class="item" style='height:25px;width:18px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
+        <view class='list-title-icon' wx:if="{{!isMap}}" style='right:-60rpx;'>
+          <image class="item" style='height:25px;width:25px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
         </view>
-        <view class='list-title-icon' wx:if="{{isMap}}" style='right:100rpx;'>
+        <view class='list-title-icon' wx:if="{{isMap}}" style='right:-60rpx;'>
           <image class="item" style='height:25px;width:25px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
         </view>
+        </view>
       </view>
+      
+      
     </view>
+  </view>
+  <view class="weui-panel weui-panel_access">
+
 
 <scroll-view wx:if="{{!isMap}}" scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
         <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key" >
@@ -37,10 +35,8 @@
             <view class='sb-list' >
               <ul>
                 <li>
-                  <div class="sb-list-left">设备编号
-                    <image src='../../utils/pic/sb.png'></image>
-                  </div>
-                  <div class="sb-list-right">{{item.dev_batchno}}</div>
+
+                  <div class="sb-list-right" style="width:93%;text-align:left;padding-left:7%;"><image src='../../utils/pic/sb.png'></image>{{item.dev_batchno}}</div>
                 </li>
                 <li>
                   <div class="sb-list-left">设备类型 </div>
@@ -48,13 +44,16 @@
                 </li>
                 <li>
                   <div class="sb-list-left">设备状态</div>
-                  <div class="sb-list-right">{{elf.getStatus(item.dev_status)}}</div>
+                  <div class="sb-list-right" style="color:#ff7304">{{elf.getStatus(item.dev_status)}}</div>
                 </li>
                 <li>
                   <div class="sb-list-left">设备等级</div>
                   <div class="sb-list-right">{{elf.getLevel(item.dev_level)}}</div>
                 </li>
-                
+                <li>
+                  <div class="sb-list-left">设备地址</div>
+                  <div class="sb-list-right">{{item.dev_address}}</div>
+                </li>
               </ul>
             </view>
           </navigator>
@@ -64,7 +63,11 @@
 
    
     <view wx:if="{{isMap}}">
-    <map id="myMap" style="width: 100%; height: 500px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}" bindmarkertap="markertap" show-location show-compass circles="{{circles}}"></map>
+    <map id="myMap" style="width: 100%; height: 90vh;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}" bindmarkertap="markertap" show-location show-compass circles="{{circles}}">
+    <cover-view class="cover-view" bindtap='juli' style='position:absolute;right:5px;top:5px;font-size:0.8em;'>
+            半径：[{{index}}m]
+          </cover-view>
+    </map>
   </view>
   </view>
 </view>
