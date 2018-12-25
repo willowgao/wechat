@@ -1,7 +1,7 @@
 <!--pages/clientinfodetail/clientinfodetail.wxml-->
 
-<view class='border_view yzw-title-bg' bindtap='goto'>{{item.cName}}
-  <label style='float:right;padding-right:20rpx;'>广告主</label>
+<view class='border_view yzw-title-bg' bindtap='goto'><image src='../../utils/pic/kh_prod.png' style='width:29.5px; height:34px;position: absolute; left:10px; top:8px;'></image>{{item.cName}}
+  <!--<label style='float:right;padding-right:20rpx;'>广告主</label>-->
 </view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
   <view class='yzw-cate-title'>

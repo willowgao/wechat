@@ -12,6 +12,7 @@ Page({
     circles: [],
     array: ['美国', '中国', '巴西', '日本', "1", "1", "1", "1", "1", "1", "1", "1", "1"],
     index: 500,
+    scale: 15
   },
   onLoad: function() {
     // 实例化API核心类
@@ -175,11 +176,13 @@ Page({
           cir.fillColor = "#87CEEB50";
           let cirArr = [];
           cirArr.push(cir);
-          console.log(cirArr)
+
+          let scale = 15 - res.tapIndex * 3;
 
           that.setData({
             circles: cirArr,
-            index: index
+            index: index,
+            scale: scale
           })
         }
       }

@@ -7,9 +7,9 @@
 .view_mg{
   margin: 5rpx;
 }
-.yzw-title-bg{ margin: 10px; background-image: url('../../utils/pic/detail-bg.png') no-repeat center;color: #fff; line-height: 100rpx; height: 100rpx; width: 95%; background-color: #8f54e1;border: none; text-align: center;}
+.yzw-title-bg{ margin: 10px; background-image: url('../../utils/pic/detail-bg.png') no-repeat center;color: #fff; line-height: 100rpx; height: 100rpx; width: 95%; background-color: #ff7304;border: none; text-align: left;position: relative; padding-left:50px;}
 .weui-media-box__title{ line-height: 72rpx; color: #b9b9b9; border-bottom: 1px solid #e6e6e6;}
 .weui-media-box__desc{color:#17c9f3;}
 .weui-flex{margin-top:10px;}
 .yzw-cate-title{ background: #ededed; color: #7b7b7b; height: 80rpx; line-height: 80rpx; padding-left: 15rpx;margin-bottom: 10rpx;}
-.yzw-cate-title span{ margin-right: 15rpx; color: #8f54e1;}
+.yzw-cate-title span{ margin-right: 15rpx; color: #ff7304;}

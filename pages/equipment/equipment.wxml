@@ -15,49 +15,54 @@
   </view>
   <view class="weui-panel weui-panel_access">
     <view class="weui-flex">
-      <view class="weui-flex__item">
-        <view class="yzw-title">设备列表</view>
-      </view>
-      <view class="weui-flex__item" style='height:12px;'>
-        <view style='float:right;'>
+      <view class="list-title">
+        <view class="yzw-title">设备名称</view>
+        <view class='list-title-icon' >
           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <image class="item" style='height:35px;width:25px;margin-right:30px;margin-top:7px;' src='../../utils/pic/sx.png'></image>
+            <image class="item" style='height:25px;width:25px;' src='../../utils/pic/sx.png'></image>
           </picker>
         </view>
-        <view style='float:right;' wx:if="{{!isMap}}">
-          <image class="item" style='height:35px;width:25px;margin-right:30px;margin-top:7px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
+        <view class='list-title-icon' wx:if="{{!isMap}}" style='right:100rpx;'>
+          <image class="item" style='height:25px;width:18px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
         </view>
-        <view style='float:right;' wx:if="{{isMap}}">
-          <image class="item" style='height:35px;width:25px;margin-right:30px;margin-top:7px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
+        <view class='list-title-icon' wx:if="{{isMap}}" style='right:100rpx;'>
+          <image class="item" style='height:25px;width:25px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
         </view>
       </view>
     </view>
-    <scroll-view wx:if="{{!isMap}}" scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
-      <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
-        <navigator url="../equipmentdetail/equipmentdetail?devid={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style='height:180rpx; width:150rpx;'>
-            <image class="weui-media-box__thumb" src="../../utils/pic/sb-bg.png" />
-          </view>
-          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">
-              <label>设备编号：{{item.dev_batchno}}</label>
+
+<scroll-view wx:if="{{!isMap}}" scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
+        <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key" >
+          <navigator url="../equipmentdetail/equipmentdetail?devid={{item.id}}" class="" hover-class="">
+            <view class='sb-list' >
+              <ul>
+                <li>
+                  <div class="sb-list-left">设备编号
+                    <image src='../../utils/pic/sb.png'></image>
+                  </div>
+                  <div class="sb-list-right">{{item.dev_batchno}}</div>
+                </li>
+                <li>
+                  <div class="sb-list-left">设备类型 </div>
+                  <div class="sb-list-right">{{elf.getType(item.dev_type)}}</div>
+                </li>
+                <li>
+                  <div class="sb-list-left">设备状态</div>
+                  <div class="sb-list-right">{{elf.getStatus(item.dev_status)}}</div>
+                </li>
+                <li>
+                  <div class="sb-list-left">设备等级</div>
+                  <div class="sb-list-right">{{elf.getLevel(item.dev_level)}}</div>
+                </li>
+                
+              </ul>
             </view>
-            <!-- <view class="weui-media-box__desc">
-              <label>设备编码：{{item.dev_batchno}}</label>
-            </view> -->
-            <view class="weui-media-box__desc">
-              <label>设备地址：{{item.dev_address}}</label>
-            </view>
-            <view class="weui-media-box__desc">
-              <label>设备状态：{{elf.getStatus(item.dev_status)}}</label>
-            </view>
-            <view class="weui-media-box__desc">
-              <label>设备等级：{{elf.getLevel(item.dev_level)}}</label>
-            </view>
-          </view>
-        </navigator>
-      </view>
-    </scroll-view>
+          </navigator>
+        </view>
+      </scroll-view>
+
+
+   
     <view wx:if="{{isMap}}">
     <map id="myMap" style="width: 100%; height: 500px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='16' markers="{{markers}}" bindmarkertap="markertap" show-location show-compass circles="{{circles}}"></map>
   </view>
