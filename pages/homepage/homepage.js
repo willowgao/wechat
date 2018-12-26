@@ -22,20 +22,15 @@ Page({
   onShow: function() {
     var that = this;
     wx.getLocation({
-      type: 'wgs84',
+      type: 'gcj02',
       success(res) {
         let latitude = res.latitude
         let longitude = res.longitude
-        that.setData({
-          latitude: latitude,
-          longitude: longitude
-        })
-
         let locations = latitude + "," + longitude;
         let cir = {};
         cir.latitude = res.latitude;
-        cir.longitude = res.longitude
-        cir.radius = 500;
+        cir.longitude = res.longitude;
+        cir.radius = 1000;
         cir.color = "#E0FFFF";
         cir.fillColor = "#87CEEB50";
         let cirArr = [];

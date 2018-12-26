@@ -78,7 +78,7 @@ Page({
   onShow: function() {
     var that = this;
     wx.getLocation({
-      type: 'wgs84',
+      type: 'gcj02',
       success(res) {
         let latitude = res.latitude
         let longitude = res.longitude
