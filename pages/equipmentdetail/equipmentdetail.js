@@ -56,6 +56,7 @@ Page({
       console.log(json);
       if (json.state === 'ok') {
         let picArray = json.resultMap.result.devinfo[0].dev_pic.split(",");
+        picArray = picArray.slice((picArray.length - 2) < 0 ? "0" : (picArray.length - 2), (picArray.length - 1));
         let conS = json.resultMap.result.contract;
         if (conS.length > 0) {
           for (let i = 0; i < conS.length; i++) {
@@ -69,7 +70,7 @@ Page({
         that.setData({
           item: json.resultMap.result.devinfo[0],
           contractItem: json.resultMap.result.contract,
-          picArray: picArray.slice(0, (picArray.length - 1))
+          picArray: picArray
         })
         console.log(that.data.picArray);
       } else {
@@ -81,47 +82,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  },
   formatDate: function(obj) {
     var date = new Date(obj);
     var y = 1900 + date.getYear();
