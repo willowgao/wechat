@@ -35,7 +35,7 @@
 .bannerbg{ height:229px; background: #ff7304;border-radius: 0 0 80rpx 80rpx;  }
 .weui-flex__ite{text-align:center;width:33%; height: 50%; float:left;color:#fff;}
 
- .weui-flex__ite image{margin:20px 20px 0 20px;height:34px; clear: both; margin-top: 60rpx;}
+ .weui-flex__ite image{margin:20px 20px 0 20px;height:34px; width: 34px; clear: both; margin-top: 60rpx;}
   .weui-flex__ite:first-child image{width: 29.5px;}
  .weui-flex__ite p{ clear: both; margin-top: 10rpx; display: block; font-weight: 500;}
  .yzw-main{ width: 94%;  position: absolute; top: 260rpx; left: 20rpx; height: auto;overflow: hidden;background:#fff;border-radius: 23rpx;}
