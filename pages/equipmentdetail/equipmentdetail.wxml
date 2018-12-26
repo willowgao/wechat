@@ -2,44 +2,56 @@
 <!-- 引入过滤器 -->
 <wxs module="elf" src="../../filter/equipmentfilter.wxs"></wxs>
 
-<view class='border_view yzw-title-bg'  style='display:none;'><image src='../../utils/pic/sb_prod.png' style='width:34px; height:34px;position: absolute; left:10px; top:8px;'></image>{{item.dev_batchno}}</view>
+<view class='border_view yzw-title-bg' style='display:none;'>
+  <image src='../../utils/pic/sb_prod.png' style='width:34px; height:34px;position: absolute; left:10px; top:8px;'></image>{{item.dev_batchno}}</view>
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
   <view class='yzw-cate-title'>
     <span>|</span>图片信息</view>
-  <view class="weui-article__p" wx:for="{{picArray}}" wx:for-index="index" wx:for-item="pic" wx:key="key">
+  <view class="weui-article__p" wx:if="{{picArray.length>0}}" wx:for="{{picArray}}" wx:for-index="index" wx:for-item="pic" wx:key="key">
     <image style='width:100%;' src="{{pic}}" data-src="{{pic}}" bindtap="previewImage" />
+  </view>
+  <view class="weui-article__p" wx:if="{{!picArray.length>0}}">
+    <image style='width:100%;' src="../../utils/pic/sb_mr.png" />
   </view>
   <view class='yzw-cate-title'>
     <span>|</span>设备信息</view>
-     <view class="detail-list">
-    <label>编号</label><span  style="color:#ff7304">{{item.dev_batchno}}</span>
+  <view class="detail-list">
+    <label>编号</label>
+    <span style="color:#ff7304">{{item.dev_batchno}}</span>
   </view>
   <view class="detail-list">
-    <label>类型</label><span>{{elf.getType(item.dev_type)}}</span>
+    <label>类型</label>
+    <span>{{elf.getType(item.dev_type)}}</span>
   </view>
   <view class="detail-list">
-    <label>等级</label><span  style="color:#ff7304">{{elf.getLevel(item.dev_level)}}</span>
+    <label>等级</label>
+    <span style="color:#ff7304">{{elf.getLevel(item.dev_level)}}</span>
   </view>
   <view class="detail-list">
-    <label>地址</label><span>{{item.dev_address}}</span>
+    <label>地址</label>
+    <span>{{item.dev_address}}</span>
   </view>
   <view class='yzw-cate-title'>
     <span>|</span>地址信息</view>
   <view class="detail-list">
-    <label>区域</label><span>{{elf.getArea(item.dev_area)}}</span>
+    <label>区域</label>
+    <span>{{elf.getArea(item.dev_area)}}</span>
   </view>
   <view class="detail-list">
-    <label>楼盘</label><span>{{item.buildName}}</span>
+    <label>楼盘</label>
+    <span>{{item.buildName}}</span>
   </view>
-  
+
   <view class='yzw-cate-title'>
     <span>|</span>合同信息</view>
- 
+
   <view class="detail-list">
-    <label>编码</label><span  style="color:#ff7304">{{item.contractNo}}</span>
+    <label>编码</label>
+    <span style="color:#ff7304">{{item.contractNo}}</span>
   </view>
   <view class="detail-list">
-    <label>客户</label><span>{{item.cName}}</span>
+    <label>客户</label>
+    <span>{{item.cName}}</span>
   </view>
 
   <view class='yzw-cate-title'>
@@ -49,16 +61,20 @@
       <view class="weui-panel__bd" wx:for="{{contractItem}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="detail-list">
-            <label style='width:24%;'>合同编号</label><span style='width:72%;'>{{item.contractcode}}</span>
+            <label style='width:24%;'>合同编号</label>
+            <span style='width:72%;'>{{item.contractcode}}</span>
           </view>
           <view class="detail-list">
-            <label style='width:24%;'>设备编号</label><span style='width:72%;'>{{item.devBatchno}}</span>
+            <label style='width:24%;'>设备编号</label>
+            <span style='width:72%;'>{{item.devBatchno}}</span>
           </view>
           <view class="detail-list">
-            <label style='width:24%;'>起始日期</label><span style='width:72%;'>{{item.sdate}}</span>
+            <label style='width:24%;'>起始日期</label>
+            <span style='width:72%;'>{{item.sdate}}</span>
           </view>
           <view class="detail-list">
-            <label style='width:24%;'>截至日期</label><span style='width:72%;'>{{item.edate}}</span>
+            <label style='width:24%;'>截至日期</label>
+            <span style='width:72%;'>{{item.edate}}</span>
           </view>
         </view>
       </view>
