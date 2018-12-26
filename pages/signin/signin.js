@@ -93,7 +93,7 @@ Page({
       wx.hideToast();
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
-        let rel = json.resultMap.result.rel;
+        let rel = json.resultMap.result;
         if (rel===1){
           wx.navigateTo({
             url: '../info/info?id=1'
