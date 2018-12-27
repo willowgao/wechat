@@ -268,7 +268,7 @@ Page({
   },
   markertap(id) {
     wx.navigateTo({
-      url: '../equipmentdetail/equipmentdetail?devid =' + id.markerId
+      url: '../equipmentdetail/equipmentdetail?devid=' + id.markerId
     })
   },
   juli: function() {
