@@ -37,7 +37,7 @@
       <scroll-view wx:if="{{!isMap}}" scroll-y style='height:67vh;' bindscrolltolower="lower" lower-threshold="15">
 
         <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
-          <navigator url="../equipmentdetail/equipmentdetail?devid={{item.id}}" class="" hover-class="">
+          <navigator url="../equipmentdetail/equipmentdetail?devid={{item.id}}&isRecommend=true" class="" hover-class="">
             <view class='sb-list'>
               <ul>
                 <li>

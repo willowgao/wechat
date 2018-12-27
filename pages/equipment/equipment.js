@@ -238,6 +238,9 @@ Page({
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
         let data_new = json.resultMap.result.rows;
+        that.setData({
+          items: data_new
+        })
         that.markPoint(data_new);
       } else {
         wx.showModal({

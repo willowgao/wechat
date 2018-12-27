@@ -10,9 +10,9 @@
   <view class="weui-article__p" wx:if="{{picArray.length>0}}" wx:for="{{picArray}}" wx:for-index="index" wx:for-item="pic" wx:key="key">
     <image style='width:100%;' src="{{pic}}" data-src="{{pic}}" bindtap="previewImage" />
   </view>
-  <view class="weui-article__p" wx:if="{{!picArray.length>0}}">
+  <!-- <view class="weui-article__p" wx:if="{{!picArray.length>0}}">
     <image style='width:100%;' src="../../utils/pic/sb_mr.png" />
-  </view>
+  </view> -->
   <view class='yzw-cate-title'>
     <span>|</span>设备信息</view>
   <view class="detail-list">
@@ -42,21 +42,21 @@
     <span>{{item.buildName}}</span>
   </view>
 
-  <view class='yzw-cate-title'>
+  <view class='yzw-cate-title' wx:if="{{!isRecommend}}">
     <span>|</span>合同信息</view>
 
-  <view class="detail-list">
+  <view class="detail-list" wx:if="{{!isRecommend}}">
     <label>编码</label>
     <span style="color:#ff7304">{{item.contractNo}}</span>
   </view>
-  <view class="detail-list">
+  <view class="detail-list" wx:if="{{!isRecommend}}">
     <label>客户</label>
     <span>{{item.cName}}</span>
   </view>
 
-  <view class='yzw-cate-title'>
+  <view class='yzw-cate-title' wx:if="{{!isRecommend}}">
     <span>|</span>设备上刊记录</view>
-  <view class="weui-panel weui-panel_access">
+  <view class="weui-panel weui-panel_access" wx:if="{{!isRecommend}}">
     <scroll-view wx:if="{{contractItem.length>0}}" scroll-y style='height:160px;' bindscrolltolower="lower" lower-threshold="15">
       <view class="weui-panel__bd" wx:for="{{contractItem}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">

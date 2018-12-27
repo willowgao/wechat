@@ -10,7 +10,8 @@ Page({
     item: {},
     userId: null,
     picArray: [],
-    contractItem: []
+    contractItem: [],
+    isRecommend: false
   },
 
   /**
@@ -20,6 +21,12 @@ Page({
     var that = this;
 
     var devid = options.devid;
+    if (options.isRecommend) {
+      this.setData({
+        isRecommend: true
+      });
+    }
+
     this.setData({
       devid: devid
     });
@@ -55,7 +62,14 @@ Page({
       var json = JSON.parse(data.data);
       console.log(json);
       if (json.state === 'ok') {
-        let picArray = json.resultMap.result.devinfo[0].dev_pic.split(",");
+        let picStr = "";
+        if (json.resultMap.result.devinfo[0].dev_pic === "") {
+          picStr = json.resultMap.result.devinfo[0].dev_pic + "../../utils/pic/sb_mr.png,";
+        } else {
+          picStr = json.resultMap.result.devinfo[0].dev_pic;
+        }
+        let picArray = picStr.split(",");
+        // picArray.push();
         picArray = picArray.slice((picArray.length - 2) < 0 ? "0" : (picArray.length - 2), (picArray.length - 1));
         let conS = json.resultMap.result.contract;
         if (conS.length > 0) {

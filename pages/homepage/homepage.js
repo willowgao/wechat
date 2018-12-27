@@ -152,7 +152,7 @@ Page({
   },
   markertap(id) {
     wx.navigateTo({
-      url: '../equipmentdetail/equipmentdetail?devid=' + id.markerId
+      url: '../equipmentdetail/equipmentdetail?devid=' + id.markerId + '&isRecommend=' + true
     })
   },
   juli: function() {
