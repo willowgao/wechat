@@ -33,7 +33,7 @@ Page({
     circles: [],
     cid: "",
     buildid: "",
-    scale:15
+    scale: 15
   },
 
   /**
@@ -67,12 +67,18 @@ Page({
       key: 'XMEBZ-IXNCU-6K4VM-2VFLR-7XOE7-J7BXG'
     });
 
+    if (options.buildid || options.cid) {
+      this.setData({
+        isMap: false
+      })
+    }
+
     let buildid = options.buildid;
     let cid = options.cid;
 
     this.setData({
-      buildid: buildid === "undefined" ? "" : buildid,
-      cid: cid === "undefined" ? "" : cid
+      buildid: typeof(buildid) === "undefined" ? "" : buildid,
+      cid: typeof(cid) === "undefined" ? "" : cid
     });
   },
   onShow: function() {
@@ -105,6 +111,7 @@ Page({
   onReady: function() {
     let that = this;
     that.getAppData(false);
+    that.getMapData();
   },
   getAppData: function(isSearch) {
     var that = this;
