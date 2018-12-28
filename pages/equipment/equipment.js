@@ -110,7 +110,7 @@ Page({
    */
   onReady: function() {
     let that = this;
-    that.getAppData(false);
+    // that.getAppData(false);
     that.getMapData();
   },
   getAppData: function(isSearch) {
@@ -217,6 +217,7 @@ Page({
   toggleShow: function() {
     var that = this;
     if (that.data.isMap) {
+      that.getAppData(false);
       that.setData({
         isMap: false
       })
@@ -238,9 +239,6 @@ Page({
       var json = JSON.parse(data.data);
       if (json.state === 'ok') {
         let data_new = json.resultMap.result.rows;
-        that.setData({
-          items: data_new
-        })
         that.markPoint(data_new);
       } else {
         wx.showModal({
