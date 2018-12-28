@@ -110,8 +110,12 @@ Page({
    */
   onReady: function() {
     let that = this;
+    if (that.data.buildid || that.data.cid) {
+      that.getAppData(false);
+    } else {
+      that.getMapData();
+    }
     // that.getAppData(false);
-    that.getMapData();
   },
   getAppData: function(isSearch) {
     var that = this;
@@ -145,7 +149,7 @@ Page({
             items: data_new,
             cName: ""
           })
-          // that.markPoint(data_new);
+          that.markPoint(data_new);
         } else {
           let term1 = data_new.length === 0;
           let term2 = function() {
@@ -222,7 +226,11 @@ Page({
         isMap: false
       })
     } else {
-      that.getMapData();
+      if (that.data.buildid || that.data.cid) {
+        that.markPoint(this.data.items);
+      } else {
+        that.getMapData();
+      }
       that.setData({
         isMap: true
       })
