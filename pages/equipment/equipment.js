@@ -261,11 +261,12 @@ Page({
     var mks = [];
     for (var i = 0; i < rows.length; i++) {
       let location = rows[i].dev_position.split(",");
+      let mapArr = that.convert_BD09_To_GCJ02(location[1], location[0]);
       mks.push({ // 获取返回结果，放到mks数组中
         title: rows[i].dev_batchno,
         id: rows[i].id,
-        latitude: location[1],
-        longitude: location[0],
+        latitude: mapArr[1],
+        longitude: mapArr[0],
         iconPath: "../../utils/pic/location.png", //图标路径
         width: 35,
         height: 35
@@ -307,5 +308,21 @@ Page({
         }
       }
     });
+  },
+  convert_BD09_To_GCJ02: function (bd_lat, bd_lon) {
+    var x_PI = 3.14159265358979324 * 3000.0 / 180.0;
+    var PI = 3.1415926535897932384626;
+    var a = 6378245.0;
+    var ee = 0.00669342162296594323;
+
+    var bd_lon = +bd_lon;
+    var bd_lat = +bd_lat;
+    var x = bd_lon - 0.0065;
+    var y = bd_lat - 0.006;
+    var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * x_PI);
+    var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_PI);
+    var gg_lng = z * Math.cos(theta);
+    var gg_lat = z * Math.sin(theta);
+    return [gg_lng, gg_lat]
   }
 })
