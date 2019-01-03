@@ -20,5 +20,10 @@
     "navigationBarTitleText": "佳达美",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#87CEFA"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置将用于展示附近的点位信息"
+    }
   }
 }

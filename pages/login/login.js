@@ -81,7 +81,7 @@ Page({
           key: "userinfo",
           data: json.resultMap.result.userinfo
         })
-        wx.navigateTo({
+        wx.navigateBack({
           url: '../homepage/homepage'
         })
       } else {
