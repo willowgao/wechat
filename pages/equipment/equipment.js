@@ -33,7 +33,8 @@ Page({
     circles: [],
     cid: "",
     buildid: "",
-    scale: 15
+    scale: 15,
+    tapIndex: null //缩放级别
   },
 
   /**
@@ -97,11 +98,13 @@ Page({
         cir.fillColor = "#87CEEB50";
         let cirArr = [];
         cirArr.push(cir);
-        that.setData({
-          latitude: latitude,
-          longitude: longitude,
-          circles: cirArr
-        })
+        if (that.data.tapIndex == null) {
+          that.setData({
+            latitude: latitude,
+            longitude: longitude,
+            circles: cirArr
+          })
+        }
       }
     })
   },
@@ -277,6 +280,21 @@ Page({
     })
   },
   markertap(id) {
+    let o = null;
+    for (let i = 0; i < this.data.markers.length; i++) {
+      if (this.data.markers[i].id == id.markerId) {
+        o = this.data.markers[i];
+      }
+    }
+    if (o != null) {
+      this.setCircle(o.latitude, o.longitude, 4);
+      this.setData({
+        latitude: o.latitude,
+        longitude: o.longitude
+      })
+    } else {
+      console.log("pick fail");
+    }
     wx.navigateTo({
       url: '../equipmentdetail/equipmentdetail?devid=' + id.markerId
     })
@@ -284,32 +302,15 @@ Page({
   juli: function() {
     let that = this;
     wx.showActionSheet({
-      itemList: ['100m', '200m', '500m', '1000m', '1500m', '2000m'],
+      itemList: ['500m', '1000m', '2000m', '3000m', '4000m', '5000m'],
       success: function(res) {
-        let arr = [100, 200, 500, 1000, 1500, 2000];
         if (!res.cancel) {
-          let index = arr[res.tapIndex];
-          let cir = {};
-          cir.latitude = that.data.latitude;
-          cir.longitude = that.data.longitude
-          cir.radius = index;
-          cir.color = "#E0FFFF";
-          cir.fillColor = "#87CEEB50";
-          let cirArr = [];
-          cirArr.push(cir);
-
-          let scale = 18 - res.tapIndex;
-
-          that.setData({
-            circles: cirArr,
-            j_index: index,
-            scale: scale
-          })
+          that.setCircle(that.data.latitude, that.data.longitude, res.tapIndex);
         }
       }
     });
   },
-  convert_BD09_To_GCJ02: function (bd_lat, bd_lon) {
+  convert_BD09_To_GCJ02: function(bd_lat, bd_lon) {
     var x_PI = 3.14159265358979324 * 3000.0 / 180.0;
     var PI = 3.1415926535897932384626;
     var a = 6378245.0;
@@ -324,5 +325,27 @@ Page({
     var gg_lng = z * Math.cos(theta);
     var gg_lat = z * Math.sin(theta);
     return [gg_lng, gg_lat]
+  },
+  setCircle: function(latitude, longitude, tapIndex) {
+    let that = this;
+    let arr = [500, 1000, 2000, 3000, 4000, 5000];
+    let index = arr[tapIndex];
+    let cir = {};
+    cir.latitude = latitude;
+    cir.longitude = longitude
+    cir.radius = index;
+    cir.color = "#E0FFFF";
+    cir.fillColor = "#87CEEB50";
+    let cirArr = [];
+    cirArr.push(cir);
+
+    let scale = 18 - tapIndex;
+
+    that.setData({
+      circles: cirArr,
+      j_index: index,
+      scale: scale,
+      tapIndex: tapIndex
+    })
   }
 })

@@ -160,10 +160,10 @@ Page({
     let that = this;
     wx.showActionSheet({
 
-      itemList: ['100m', '200m', '500m', '1000m', '1500m', '2000m'],
+      itemList: ['500m', '1000m', '2000m', '3000m', '4000m', '5000m'],
 
       success: function(res) {
-        let arr = [100, 200, 500, 1000, 1500, 2000];
+        let arr = [500, 1000, 2000, 3000, 4000, 5000];
         if (!res.cancel) {
           let index = arr[res.tapIndex];
           let cir = {};
