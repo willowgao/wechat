@@ -19,7 +19,7 @@ Page({
     page: 1,
     rows: 20,
 
-    array: ['全部区域','江岸区', '江汉区', '硚口区', '汉阳区', '武昌区',
+    array: ['全部区域', '江岸区', '江汉区', '硚口区', '汉阳区', '武昌区',
       '洪山区', '青山区', '东西湖区', '蔡甸区', '江夏区', '黄陂区', '汉南区', '新洲区'
     ],
     index: 0
@@ -114,7 +114,7 @@ Page({
         if (isSearch) {
           that.setData({
             items: data_new,
-            buildname: ""
+            // buildname: ""  //查询成功之后清理查询条件，input value双向绑定，无需清空
           })
         } else {
           let term1 = data_new.length === 0;
