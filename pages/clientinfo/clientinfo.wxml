@@ -102,7 +102,7 @@
     </scroll-view>-->
   </view>
   <view style='position: fixed;bottom: 1px;width:100%;'>
-    <button style='background-color:#ff7304;' type="default" hover-class="other-button-hover" bindtap='logout'>
+    <button style='background-color:#ff7304;color: #fff;' type="default" hover-class="other-button-hover" bindtap='logout'>
       退出登录
     </button>
   </view>
