@@ -148,5 +148,28 @@ Page({
   getAppDataSearch: function() {
     let that = this;
     that.getAppData(true);
+  },
+  logout:function(){
+    wx.showModal({
+      title: '提示',
+      content: '是否退出登录？',
+      confirmText: "确认",
+      cancelText: "取消",
+      success: function (res) {
+        if (res.confirm) {
+          wx.removeStorage({
+            key: 'userinfo',
+            success(res) {
+              console.log(res.data)
+            }
+          })
+          wx.reLaunch({
+            url: '../login/login'
+          })
+        } else {
+          console.log('用户取消')
+        }
+      }
+    });
   }
 })

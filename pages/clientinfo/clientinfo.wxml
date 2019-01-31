@@ -15,39 +15,40 @@
     <!--<view class="yzw-title">客户列表</view>-->
 
 
-<scroll-view scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
+    <scroll-view scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
       <view class="weui-panel__bd" wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="key">
         <navigator url="../clientinfodetail/clientinfodetail?cid={{item.id}}">
-            <view class='sb-list' >
-              <ul>
-                <li>
-                  <!--<div class="sb-list-left">客户名称</div>-->
-                  <div class="sb-list-right" style="width:93%;text-align:left;padding-left:7%;"><image src='../../utils/pic/wo.png' ></image>{{item.cName}}</div>
-                  
-                </li>
-                <li>
-                  <div class="sb-list-left">联系人 </div>
-                  <div class="sb-list-right">{{item.cCorporation}}</div>
-                </li>
-                <li>
-                  <div class="sb-list-left">业务员</div>
-                  <div class="sb-list-right" style="color:#ff7304">{{item.salername}}</div>
-                </li>
-                <li>
-                  <div class="sb-list-left">联系电话</div>
-                  <div class="sb-list-right" style="color:#ff7304">{{item.cCorpTel}}</div>
-                </li>
-                <li>
-                  <div class="sb-list-left">客户地址</div>
-                  <div class="sb-list-right">{{item.cAddress}}</div>
-                </li>
-                
-              </ul>
-            </view>
-            
-          </navigator>
-        </view>
-      </scroll-view>
+          <view class='sb-list'>
+            <ul>
+              <li>
+                <!--<div class="sb-list-left">客户名称</div>-->
+                <div class="sb-list-right" style="width:93%;text-align:left;padding-left:7%;">
+                  <image src='../../utils/pic/wo.png'></image>{{item.cName}}</div>
+
+              </li>
+              <li>
+                <div class="sb-list-left">联系人 </div>
+                <div class="sb-list-right">{{item.cCorporation}}</div>
+              </li>
+              <li>
+                <div class="sb-list-left">业务员</div>
+                <div class="sb-list-right" style="color:#ff7304">{{item.salername}}</div>
+              </li>
+              <li>
+                <div class="sb-list-left">联系电话</div>
+                <div class="sb-list-right" style="color:#ff7304">{{item.cCorpTel}}</div>
+              </li>
+              <li>
+                <div class="sb-list-left">客户地址</div>
+                <div class="sb-list-right">{{item.cAddress}}</div>
+              </li>
+
+            </ul>
+          </view>
+
+        </navigator>
+      </view>
+    </scroll-view>
 
 
     <!--<scroll-view scroll-y style='height:{{contentHeight}}px;' bindscrolltolower="lower" lower-threshold="15">
@@ -100,9 +101,9 @@
       </view>
     </scroll-view>-->
   </view>
-  <!-- <view class="weui-footer weui-footer_fixed-bottom">
-    <view class="weui-footer__links">
-      <view class="weui-footer__text">向上拉查看更多</view>
-    </view>
-  </view> -->
+  <view style='position: fixed;bottom: 1px;width:100%;'>
+    <button style='background-color:#ff7304;' type="default" hover-class="other-button-hover" bindtap='logout'>
+      退出登录
+    </button>
+  </view>
 </view>
