@@ -9,7 +9,7 @@
     </view>
     <view wx:else class="weui-media-box__bd weui-media-box__bd_in-appmsg">
       <view style='height:60px;font-size:0.8em;'>请联系佳达美工作人员进行处理，电话号码是：
-        <span style='color: #87CEFA' bindtap='call'>400-6565-139/18120216789</span>
+        <span style='color: #87CEFA' bindtap='call'>400-6565-139/13667107073</span>
       </view>
     </view>
 
