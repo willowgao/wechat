@@ -69,7 +69,7 @@ Page({
     })
   },
   goto: function() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../equipment/equipment?buildid=' + this.data.buildid
     })
   }

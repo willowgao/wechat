@@ -4,30 +4,39 @@
 <!-- <view class='border_view yzw-title-bg' bindtap='goto'><image src='../../utils/pic/lp_prod.png' style='width:34px; height:34px;position: absolute; left:10px; top:8px;'></image>{{item.buildname}}
 </view> -->
 
-  <view class='yzw-cate-title yzw-title-bg' bindtap='goto'>
-    <span>|</span>楼盘信息 <image src='../../utils/pic/more.png' style='width:40px;height:40px;float:right; margin-top:1px;margin-right:3px;'></image></view>
+<view class='yzw-cate-title yzw-title-bg' bindtap='goto'>
+  <span>|</span>楼盘信息
+  <image src='../../utils/pic/more.png' style='width:40px;height:40px;float:right; margin-top:1px;margin-right:3px;'></image>
+</view>
 
 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style='margin:10px;'>
   <view class="detail-list">
-    <label>楼盘名称</label><span>{{item.buildname}}</span>
+    <label>楼盘名称</label>
+    <span>{{item.buildname}}</span>
   </view>
   <view class="detail-list">
-    <label>楼盘价格</label><span style="color:#ff7304">￥{{item.buildoccupancy}}</span>
+    <label>楼盘价格</label>
+    <span style="color:#ff7304">￥{{item.buildoccupancy}}</span>
   </view>
   <view class="detail-list">
-    <label>楼盘户数</label><span>{{item.buildcount}}</span>
+    <label>楼盘户数</label>
+    <span>{{item.buildcount}}</span>
   </view>
   <view class="detail-list">
-    <label>楼盘地址</label><span>{{item.buildaddress}}</span>
+    <label>楼盘地址</label>
+    <span>{{item.buildaddress}}</span>
   </view>
   <view class="detail-list">
-    <label>所属区域</label><span>{{elf.getArea(item.buildarea)}}</span>
+    <label>所属区域</label>
+    <span>{{elf.getArea(item.buildarea)}}</span>
   </view>
   <view class="detail-list">
-    <label>设备数量</label><span style="color:#ff7304">{{item.devcount}}个</span>
+    <label>设备数量</label>
+    <span style="color:#ff7304">{{item.devcount}}个</span>
   </view>
   <view class="detail-list">
-    <label>建筑年份</label><span style="color:#ff7304">{{item.buildposition}}年</span>
+    <label>建筑年份</label>
+    <span style="color:#ff7304">{{item.buildposition}}年</span>
   </view>
   <!-- <view class="weui-media-box__title">
     <label>物业公司：{{item.wyname}}</label>
