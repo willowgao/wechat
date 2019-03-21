@@ -8,10 +8,12 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": true,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.6.2",
 	"appid": "wx10efb2c69c3bf922",
 	"projectname": "wechat_jdm",
 	"debugOptions": {

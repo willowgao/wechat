@@ -1,18 +1,16 @@
 {
   "pages": [
     "pages/homepage/homepage",
-    "pages/signin/signin",
-    "pages/info/info",
-    "pages/login/login",
     "pages/clientinfo/clientinfo",
     "pages/clientinfodetail/clientinfodetail",
-    "pages/reminder/reminder",
-    "pages/index/index",
-    "pages/logs/logs",
     "pages/housesinfo/housesinfo",
     "pages/housesinfodetail/housesinfodetail",
     "pages/equipment/equipment",
-    "pages/equipmentdetail/equipmentdetail"
+    "pages/equipmentdetail/equipmentdetail",
+    "pages/signin/signin",
+    "pages/info/info",
+    "pages/login/login",
+    "pages/reminder/reminder"
   ],
   "window": {
     "backgroundTextStyle": "dark",
