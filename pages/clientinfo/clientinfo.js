@@ -35,18 +35,18 @@ Page({
         app.openConfirm();
       }
     });
-    wx.getSystemInfo({
-      success: function(res) {
-        let height = res.windowHeight * 0.1;
-        let heightC = res.windowHeight - height - 12;
+    wx.getStorage({
+      key: 'sys_height',
+      success(res) {
         that.setData({
-          upHeight: height,
-          contentHeight: heightC
+          upHeight: res.data.height,
+          contentHeight: res.data.heightC
         })
-        console.log(height);
-        console.log(heightC);
+      },
+      fail(res) {
+        app.openConfirm();
       }
-    })
+    });
   },
 
   /**
@@ -149,13 +149,13 @@ Page({
     let that = this;
     that.getAppData(true);
   },
-  logout:function(){
+  logout: function() {
     wx.showModal({
       title: '提示',
       content: '是否退出登录？',
       confirmText: "确认",
       cancelText: "取消",
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           wx.removeStorage({
             key: 'userinfo',

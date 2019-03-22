@@ -73,8 +73,6 @@ Page({
     //消息回调
     wx.onSocketMessage(function(data) {
       var json = JSON.parse(data.data);
-      console.log(json);
-      console.log(json.resultMap);
       if (json.state === 'ok') {
         console.log("success login");
         wx.setStorage({

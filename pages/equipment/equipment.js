@@ -53,14 +53,16 @@ Page({
         app.openConfirm();
       }
     });
-    wx.getSystemInfo({
-      success: function(res) {
-        let height = res.windowHeight * 0.1;
-        let heightC = res.windowHeight - height - 12;
+    wx.getStorage({
+      key: 'sys_height',
+      success(res) {
         that.setData({
-          upHeight: height,
-          contentHeight: heightC
+          upHeight: res.data.height,
+          contentHeight: res.data.heightC
         })
+      },
+      fail(res) {
+        app.openConfirm();
       }
     });
     // 实例化API核心类
