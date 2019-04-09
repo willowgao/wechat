@@ -79,6 +79,12 @@ Page({
     let buildid = options.buildid;
     let cid = options.cid;
 
+    if (buildid || cid) {
+      this.setData({
+        rows: 500
+      });
+    }
+
     this.setData({
       buildid: typeof(buildid) === "undefined" ? "" : buildid,
       cid: typeof(cid) === "undefined" ? "" : cid
