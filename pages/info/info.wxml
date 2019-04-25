@@ -1,19 +1,19 @@
 <view class="weui-panel_access" style='margin-top:100px;'>
-  <view class="weui-panel__bd" style='text-align:center;'>
-
-    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style='text-align:center; width:100%;margin-bottom:30rpx;'>
-      <icon type="success" size="60"></icon>
+    <view class="weui-panel__bd" style='text-align:center;'>
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style='text-align:center; width:100%;margin-bottom:30rpx;'>
+            <icon type="success" size="60"></icon>
+        </view>
+        <view wx:if="{{flag}}" class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view style='height:60px;font-size:0.8em;'>
+                提交成功！您的注册信息已经提交完毕，我们会在一个工作日内完成审批，并叫审核结果电话反馈至您，请您注意接听。
+            </view>
+        </view>
+        <view wx:else class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view style='height:60px;font-size:0.8em;'>
+                请联系佳达美工作人员进行处理，电话号码是：
+                <span style='color: #87CEFA' bindtap='call'>400-6565-139/13667107073</span>
+            </view>
+        </view>
+        <button class="weui-btn" type="primary" style='margin:10px 15px;' bindtap='back'>返回</button>
     </view>
-    <view wx:if="{{flag}}" class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view style='height:60px;font-size:0.8em;'>提交成功！您的注册信息已经提交完毕，我们会在一个工作日内完成审批，并叫审核结果电话反馈至您，请您注意接听。</view>
-    </view>
-    <view wx:else class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view style='height:60px;font-size:0.8em;'>请联系佳达美工作人员进行处理，电话号码是：
-        <span style='color: #87CEFA' bindtap='call'>400-6565-139/13667107073</span>
-      </view>
-    </view>
-
-
-    <button class="weui-btn" type="primary" style='margin:10px 15px;' bindtap='back'>返回</button>
-  </view>
 </view>
