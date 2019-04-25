@@ -23,5 +23,6 @@
     "scope.userLocation": {
       "desc": "您的位置将用于展示附近的点位信息"
     }
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

@@ -11,7 +11,7 @@
           <view class='sousuo' bindtap="getAppDataSearch">搜索</view>
        <view class='list-title-icon'>
           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <image class="item" style='height:25px;width:25px;' src='../../utils/pic/sx.png'></image>
+            <image class="item" style='height:40px;width:40px;' src='../../utils/pic/sx.png'></image>
           </picker>
         </view>
         </view>

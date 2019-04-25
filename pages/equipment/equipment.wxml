@@ -8,17 +8,17 @@
         <view class="df search_arr">
           <icon class="searchcion" size='19' type='search'></icon>
           <input placeholder="设备编码/设备地址" bindinput="bindKeyInput" />
-          <view class='sousuo' bindtap="getAppDataSearch">搜索</view>
-          <view class='list-title-icon'>
+          <view class='sousuo' bindtap="getAppDataSearch" style='left:150px;'>搜索</view>
+          <view class='list-title-icon' style='left:300rpx;'>
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-              <image class="item" style='height:25px;width:25px;' src='../../utils/pic/sx.png'></image>
+              <image class="item" style='height:40px;width:40px;' src='../../utils/pic/sx.png'></image>
             </picker>
           </view>
-          <view class='list-title-icon' wx:if="{{!isMap}}" style='right:-60rpx;'>
-            <image class="item" style='height:25px;width:25px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
+          <view class='list-title-icon' wx:if="{{!isMap}}" style='left:490rpx;'>
+            <image class="item" style='height:40px;width:40px;' src='../../utils/pic/map.png' bindtap="toggleShow"></image>
           </view>
-          <view class='list-title-icon' wx:if="{{isMap}}" style='right:-60rpx;'>
-            <image class="item" style='height:25px;width:25px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
+          <view class='list-title-icon' wx:if="{{isMap}}" style='left:490rpx;'>
+            <image class="item" style='height:40px;width:40px;' src='../../utils/pic/list.png' bindtap="toggleShow"></image>
           </view>
         </view>
       </view>

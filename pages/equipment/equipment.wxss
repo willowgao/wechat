@@ -22,7 +22,7 @@
     border-radius: 10rpx;
     margin-left: 20rpx;
     background: #efefef;
-    width: 78%;
+    width: 43%;
     position: relative;
 }
 
@@ -43,13 +43,13 @@
 .sousuo {
     margin-left: 25rpx;
     width: 22%;
-    line-height: 200%;
+    height: 90rpx;
+    line-height: 90rpx;
     text-align: center;
     border-radius: 10rpx;
     background-color: #ff7304;
     position: absolute;
-    top: 15rpx;
-    right: 20rpx;
+    top: 0rpx;
     color: #fff;
     z-index: 9999;
 }
@@ -98,7 +98,6 @@
 
 .list-title-icon {
     position: absolute;
-    right: -120rpx;
     top: 32rpx;
     z-index: 10;
 }
