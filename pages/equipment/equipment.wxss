@@ -22,7 +22,7 @@
     border-radius: 10rpx;
     margin-left: 20rpx;
     background: #efefef;
-    width: 43%;
+    width: 55%;
     position: relative;
 }
 
@@ -98,7 +98,7 @@
 
 .list-title-icon {
     position: absolute;
-    top: 32rpx;
+    top: 10rpx;
     z-index: 10;
 }
 
